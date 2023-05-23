@@ -10,7 +10,7 @@ module.exports = function Layout({ children }) {
         <link rel="stylesheet" href="/css/styles.css" />
         <link rel="stylesheet" href="/css/normalize.css" />
         <script defer src="/js/application.js" />
-        <title>Щебетатель</title>
+        <title>Эпидневник</title>
       </head>
 
       <body className="h-full">
