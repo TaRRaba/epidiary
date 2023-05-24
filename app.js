@@ -7,6 +7,7 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
 const indexRouter = require('./src/routes/index');
+const authRouter = require('./src/routes/auth.routes');
 const ssr = require('./src/middleware/ssr');
 
 const app = express();
@@ -34,6 +35,7 @@ app.use(ssr);
 app.use(session(sessionConfig));
 
 app.use('/', indexRouter);
+app.use('/auth', authRouter);
 
 app.get('*', (req, res) => {
   res.redirect('/');
