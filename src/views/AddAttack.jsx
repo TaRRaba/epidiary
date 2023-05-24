@@ -5,7 +5,7 @@ module.exports = function AddAttack({ date, user }) {
   return (
     <Layout user={user}>
       <div className="flex justify-center mt-10">
-        <form name="attackForm" className="attackForm bg-white">
+        <form name="attackForm" className="attackForm bg-white" action="/attack" method="POST">
           <div>
             <h2 className="text-2xl mb-5">Новый приступ</h2>
             <p>
@@ -23,7 +23,7 @@ module.exports = function AddAttack({ date, user }) {
               <option value="Не уверен(а)">Не уверен(а)</option>
               <option value="Свой вариант">Свой вариант</option>
             </select>
-            <input required className="question1Input visibility: hidden ml-3" type="text" />
+            <input required="required" className="question1Input visibility: hidden ml-3" type="text" />
           </div>
           <div className="my-3">
             <p>2. Сопровождался ли этот приступ потерей сознания?</p>
@@ -33,7 +33,7 @@ module.exports = function AddAttack({ date, user }) {
               <option value="Не уверен(а)">Не уверен(а)</option>
               <option value="Свой вариант">Свой вариант</option>
             </select>
-            <input required className="question2Input visibility: hidden ml-3" type="text" />
+            <input required="required" className="question2Input visibility: hidden ml-3" type="text" />
           </div>
 
           <div className="infoDivButton visibility: visible">
@@ -57,7 +57,7 @@ module.exports = function AddAttack({ date, user }) {
                 3. Опишите, пожалуйста, характер своих приступов.
                 Как они начинаются?
               </p>
-              <input type="text" />
+              <input className="question3Input" type="text" />
             </div>
             <div className="my-3">
               <p>4. Предчувствуете ли Вы начало приступа?</p>
@@ -70,14 +70,13 @@ module.exports = function AddAttack({ date, user }) {
             </div>
             <div className="my-3">
               <p>5. Как долго длится каждый приступ?</p>
-              <input type="text" />
+              <input className="question5Input" type="text" />
             </div>
             <div>
               <p>
                 6. Травмируетесь ли Вы во время приступа?
                 <br />
                 (падение с высоты собственного роста, прикус языка, свой вариант)
-
               </p>
               <select className="question6Select">
                 <option value="Да">Да</option>
@@ -88,7 +87,7 @@ module.exports = function AddAttack({ date, user }) {
             </div>
             <div className="my-3">
               <p>7. Как Вы чувствуете себя после приступа?</p>
-              <input type="text" />
+              <input className="question7Input" type="text" />
             </div>
             <div>
               <p>
@@ -117,7 +116,7 @@ module.exports = function AddAttack({ date, user }) {
                 10. Испытывали ли Вы изменения артериального давления/пульса/дыхания
                 во время начала эпилептического приступа?
               </p>
-              <input type="text" />
+              <input className="question10Input" type="text" />
             </div>
             <div className="my-3">
               <p>
@@ -129,11 +128,11 @@ module.exports = function AddAttack({ date, user }) {
                 <br />
                 обострение хронического заболевания, свой вариант)
               </p>
-              <input type="text" />
+              <input className="question11Input" type="text" />
             </div>
             <div className="my-3">
               <p>12. В какое время суток возникают приступы?</p>
-              <input type="text" />
+              <input className="question12Input" type="text" />
             </div>
           </div>
 
