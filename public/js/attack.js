@@ -18,7 +18,7 @@ const question6Input = document.querySelector(".question6Input");
 const question9Select = document.querySelector(".question9Select");
 const question9Input = document.querySelector(".question9Input");
 
-const mandatoryQues1 = document.querySelector(".mandatoryQues1");
+// const mandatoryQues1 = document.querySelector(".mandatoryQues1");
 //-------------------------------------------------------------------------------------
 
 attackForm?.addEventListener("click", async (event) => {
@@ -96,12 +96,14 @@ attackForm?.addEventListener("click", async (event) => {
     const question11 = document.querySelector(".question11Input").value.trim();
     const question12 = document.querySelector(".question12Input").value.trim();
 
-    console.log("question1Input", question1Input);
-
+    // проверка на 2 обязательных инпута-----------------------------------------
     if (
-      !question1Input.classList.contains("hidden") &&
-      !question2Input.classList.contains("hidden") &&
-      question1Input.value !== "" && question2Input.value !== ""
+      (question1Input.classList.contains("visible") &&
+        question2Input.classList.contains("visible") &&
+        question1Input.value !== "" &&
+        question2Input.value !== "") ||
+      (question1Input.classList.contains("hidden") &&
+        question2Input.classList.contains("hidden"))
     ) {
       question1 = question1Input.value.trim();
       question2 = question2Input.value.trim();
@@ -156,15 +158,5 @@ attackForm?.addEventListener("click", async (event) => {
     } else {
       alert("Заполните обязательные поля");
     }
-
-    // if (question1Input.value !== "") {
-    //   question1 = question1Input.value.trim();
-    //   console.log("qqqqqqqqqqqqqqqqqqqqqqqqqqqq");
-    // } else {
-    //   console.log("nnnnnnnnnnnnnnnn");
-    //   const spanMandatoryQues1 = document.createElement("span");
-    //   spanMandatoryQues1.innerText = "Заполните обязательное поле";
-    //   mandatoryQues1.append(spanMandatoryQues1);
-    // }
   }
 });
