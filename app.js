@@ -7,6 +7,8 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
 const indexRouter = require('./src/routes/index');
+const usersRouter = require('./src/routes/users');
+const usersApi = require('./src/routes/users.api');
 const ssr = require('./src/middleware/ssr');
 
 const app = express();
@@ -34,6 +36,8 @@ app.use(ssr);
 app.use(session(sessionConfig));
 
 app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/api/users', usersApi);
 
 app.get('*', (req, res) => {
   res.redirect('/');

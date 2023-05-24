@@ -2,18 +2,18 @@ const React = require('react');
 
 module.exports = function Layout({ user, children }) {
   return (
-    <html className="h-full bg-white" lang="en">
+    <html className="h-full bg-gray-200" lang="en">
       <head>
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="/css/styles.css" />
         <link rel="stylesheet" href="/css/normalize.css" />
-        <script defer src="/js/application.js" />
+        {/* <script defer src="/js/application.js" /> */}
         <title>Эпидневник</title>
       </head>
 
-      <body className="h-full">
+      <body className="h-full bg-gray-200">
         <nav>
           <div className="bg-white">
             <div className="border py-3 px-6">
@@ -35,7 +35,7 @@ module.exports = function Layout({ user, children }) {
                   </div>
                 ) : (
                   <div className="ml-2 flex">
-                    <a href="/users/auth" className="ml-2 flex cursor-pointer text-[#4520aa] items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-[#4520aa] hover:text-white">
+                    <a href="/users/profile" className="ml-2 flex cursor-pointer text-[#4520aa] items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-[#4520aa] hover:text-white">
                       <span className="text-sm font-medium">Имя</span>
                     </a>
                     <a href="/users/logout" className="ml-2 flex cursor-pointer text-[#4520aa] items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-[#4520aa] hover:text-white">
