@@ -1,6 +1,6 @@
 const React = require('react');
 
-module.exports = function Layout({ children }) {
+module.exports = function Layout({ user, children }) {
   return (
     <html className="h-full bg-white" lang="en">
       <head>
@@ -14,44 +14,39 @@ module.exports = function Layout({ children }) {
       </head>
 
       <body className="h-full">
-        <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-            <img className="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" />
-            <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
-          </div>
-
-          <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" action="#" method="POST">
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">Email address</label>
-                <div className="mt-2">
-                  <input id="email" name="email" type="email" autoComplete="email" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-                </div>
-              </div>
-
-              <div>
-                <div className="flex items-center justify-between">
-                  <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">Password</label>
-                  <div className="text-sm">
-                    <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+        <nav>
+          <div className="bg-white">
+            <div className="border py-3 px-6">
+              <div className="flex justify-between">
+                <a id="MainPage" className="flex items-center" href="/">
+                  <svg className="text-[#4520aa] w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                  </svg>
+                  <span className="ml-2 font-semibold text-[#252C32]">Эпидневник</span>
+                </a>
+                {user ? (
+                  <div className="ml-2 flex">
+                    <a href={`/users/profile/${user.id}`} className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:bg-[#4520aa]/10">
+                      <span className="text-sm font-medium">{user.userInfo.fullName}</span>
+                    </a>
+                    <a href="/users/logout" className="ml-2 flex cursor-pointer text-[#4520aa] items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-[#4520aa] hover:text-white">
+                      <span className="text-sm font-medium">Выход</span>
+                    </a>
                   </div>
-                </div>
-                <div className="mt-2">
-                  <input id="password" name="password" type="password" autoComplete="current-password" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-                </div>
+                ) : (
+                  <div className="ml-2 flex">
+                    <a href="/users/auth" className="ml-2 flex cursor-pointer text-[#4520aa] items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-[#4520aa] hover:text-white">
+                      <span className="text-sm font-medium">Имя</span>
+                    </a>
+                    <a href="/users/logout" className="ml-2 flex cursor-pointer text-[#4520aa] items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-[#4520aa] hover:text-white">
+                      <span className="text-sm font-medium">Выход</span>
+                    </a>
+                  </div>
+                )}
               </div>
-
-              <div>
-                <button type="submit" className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
-              </div>
-            </form>
-
-            <p className="mt-10 text-center text-sm text-gray-500">
-              Not a member?
-              <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Start a 14 day free trial</a>
-            </p>
+            </div>
           </div>
-        </div>
+        </nav>
         {children}
       </body>
     </html>
