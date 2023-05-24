@@ -18,8 +18,12 @@ const question6Input = document.querySelector(".question6Input");
 const question9Select = document.querySelector(".question9Select");
 const question9Input = document.querySelector(".question9Input");
 
+const mandatoryQues1 = document.querySelector(".mandatoryQues1");
+//-------------------------------------------------------------------------------------
+
 attackForm?.addEventListener("click", async (event) => {
   event.preventDefault();
+
   let question1;
   let question2;
   let question4;
@@ -28,7 +32,7 @@ attackForm?.addEventListener("click", async (event) => {
 
   if (question1Select.value === "Свой вариант") {
     question1Input.classList.replace("hidden", "visible");
-    question1 = question1Input.value.trim();
+    // question1Input.required = true;
   } else {
     question1Input.classList.replace("visible", "hidden");
     question1 = question1Select.value;
@@ -36,7 +40,6 @@ attackForm?.addEventListener("click", async (event) => {
 
   if (question2Select.value === "Свой вариант") {
     question2Input.classList.replace("hidden", "visible");
-    question2 = question2Input.value.trim();
   } else {
     question2Input.classList.replace("visible", "hidden");
     question2 = question2Select.value;
@@ -93,52 +96,75 @@ attackForm?.addEventListener("click", async (event) => {
     const question11 = document.querySelector(".question11Input").value.trim();
     const question12 = document.querySelector(".question12Input").value.trim();
 
-    if (additionalInfo.className.includes("hidden")) {
-      const response = await fetch("/attack", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          question1,
-          question2,
-        }),
-      });
-      const result = await response.json();
+    console.log("question1Input", question1Input);
 
-      if (result.status === "ok") {
-        window.location = "/";
+    if (
+      !question1Input.classList.contains("hidden") &&
+      !question2Input.classList.contains("hidden") &&
+      question1Input.value !== "" && question2Input.value !== ""
+    ) {
+      question1 = question1Input.value.trim();
+      question2 = question2Input.value.trim();
+
+      if (additionalInfo.className.includes("hidden")) {
+        const response = await fetch("/attack", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            question1,
+            question2,
+          }),
+        });
+        const result = await response.json();
+
+        if (result.status === "ok") {
+          window.location = "/";
+        } else {
+          alert("Не удалось добавить приступ!");
+        }
       } else {
-        alert("Не удалось добавить приступ!");
+        const response = await fetch("/attack", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            question1,
+            question2,
+            question3,
+            question4,
+            question5,
+            question6,
+            question7,
+            question8,
+            question9,
+            question10,
+            question11,
+            question12,
+          }),
+        });
+        const result = await response.json();
+
+        if (result.status === "ok") {
+          window.location = "/";
+        } else {
+          alert("Не удалось добавить приступ!");
+        }
       }
     } else {
-      const response = await fetch("/attack", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          question1,
-          question2,
-          question3,
-          question4,
-          question5,
-          question6,
-          question7,
-          question8,
-          question9,
-          question10,
-          question11,
-          question12,
-        }),
-      });
-      const result = await response.json();
-
-      if (result.status === "ok") {
-        window.location = "/";
-      } else {
-        alert("Не удалось добавить приступ!");
-      }
+      alert("Заполните обязательные поля");
     }
+
+    // if (question1Input.value !== "") {
+    //   question1 = question1Input.value.trim();
+    //   console.log("qqqqqqqqqqqqqqqqqqqqqqqqqqqq");
+    // } else {
+    //   console.log("nnnnnnnnnnnnnnnn");
+    //   const spanMandatoryQues1 = document.createElement("span");
+    //   spanMandatoryQues1.innerText = "Заполните обязательное поле";
+    //   mandatoryQues1.append(spanMandatoryQues1);
+    // }
   }
 });

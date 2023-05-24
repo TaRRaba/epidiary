@@ -15,7 +15,7 @@ module.exports = function AddAttack({ date, user }) {
             </p>
           </div>
 
-          <div className="my-3">
+          <div className="mandatoryQues1 my-3">
             <p>1. Какой тип приступа у Вас случился?</p>
             <select className="question1Select">
               <option value="Судорожный">Судорожный</option>
@@ -23,9 +23,9 @@ module.exports = function AddAttack({ date, user }) {
               <option value="Не уверен(а)">Не уверен(а)</option>
               <option value="Свой вариант">Свой вариант</option>
             </select>
-            <input required="required" className="question1Input visibility: hidden ml-3" type="text" />
+            <input required placeholder='Заполните обязательное поле' className="question1Input visibility: hidden ml-3" type="text" />
           </div>
-          <div className="my-3">
+          <div className="mandatoryQues2 my-3">
             <p>2. Сопровождался ли этот приступ потерей сознания?</p>
             <select className="question2Select">
               <option value="Да">Да</option>
@@ -33,7 +33,7 @@ module.exports = function AddAttack({ date, user }) {
               <option value="Не уверен(а)">Не уверен(а)</option>
               <option value="Свой вариант">Свой вариант</option>
             </select>
-            <input required="required" className="question2Input visibility: hidden ml-3" type="text" />
+            <input required="required" placeholder='Заполните обязательное поле' className="question2Input visibility: hidden ml-3" type="text" />
           </div>
 
           <div className="infoDivButton visibility: visible">
@@ -98,7 +98,7 @@ module.exports = function AddAttack({ date, user }) {
               <input className="question8Input box-content w-12 h-4 mr-2" type="number" />
               <select className="question8Select">
                 <option value="День">День</option>
-                <option value="Неделя">Неделю</option>
+                <option value="Неделю">Неделю</option>
                 <option value="Месяц">Месяц</option>
               </select>
             </div>

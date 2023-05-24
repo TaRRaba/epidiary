@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const path = require("path");
 const session = require("express-session");
 const FileStore = require("session-file-store")(session);
+const isAuth = require("./src/middleware/isAuth");
 
 const indexRouter = require("./src/routes/index");
 const attackRouter = require("./src/routes/attack.routes");
@@ -36,7 +37,8 @@ app.use(session(sessionConfig));
 
 app.use("/", indexRouter);
 
-app.use("/attack", attackRouter);
+// app.use(isAuth);
+app.use("/attack", attackRouter); // добавить в роут isAuth
 
 app.get("*", (req, res) => {
   res.redirect("/");
