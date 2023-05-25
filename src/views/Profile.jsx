@@ -4,10 +4,6 @@ const Layout = require('./Layout');
 module.exports = function Profile({
   id, email, user, data,
 }) {
-//   function convertTimeRu(date) {
-//     const dateRes = new Date(date);
-//     return dateRes.toLocaleDateString('ru-RU');
-//   }
   return (
     <Layout>
       {/* {user && user.type === 'user' ? ( */}
@@ -19,19 +15,19 @@ module.exports = function Profile({
             <div className="flex-col">
               <form className="flex-col" action="/api/users/info" method="POST">
                 <input className="visibility: hidden" name="userID" value={id} />
-                <div className="my-3 flex justify-between items-center gap-x-4">
-                  <span className="flex items-center">Как вас зовут? (ФИО):</span>
-                  <input name="fullName" type="text" required autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
+                {/* <div className="my-3 flex justify-between items-center gap-x-4">
+                  <span className="flex items-center">Как вас зовут?</span>
+                  <input name="fullName" type="text" placeholder="Фамилия Имя Отчество" required autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
                 </div>
-                <hr />
-                <div className="my-3 flex justify-between items-center gap-x-4">
+                <hr /> */}
+                {/* <div className="my-3 flex justify-between items-center gap-x-4">
                   <span className="flex items-center">Какой у вас e-mail?</span>
                   <input name="email" type="email" required value={`${email}`} autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
                 </div>
-                <hr />
+                <hr /> */}
                 <div className="my-3 flex justify-between items-center gap-x-4">
-                  <span className="flex items-center">Дата рождения:</span>
-                  <input name="bDay" type="date" required autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
+                  <span className="flex items-center">Укажите ваш возраст:</span>
+                  <input name="age" type="number" required autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
                 </div>
                 <hr />
                 <div className="my-3 flex justify-between items-center gap-x-4">
@@ -41,17 +37,19 @@ module.exports = function Profile({
                     <option>Женский</option>
                   </select>
                 </div>
+                <input id="extraInfo" className="visibility: hidden" name="extraInfo" value="false" />
                 <div id="addInfo" className="flex visibility: visible justify-center my-6 gap-x-4 shrink-0 lg:mt-0">
                   <button type="button" className="addInfo text-blue-600 hover:bg-blue-600 border-gray-700 hover:text-white text-xs w-1/2 md:w-auto font-medium bg-gray-100 rounded-lg px-4 py-2.5">
-                    Добавить историю болезни (не обязательно)
+                    Добавить дополнительную информацию (не обязательно)
                   </button>
                 </div>
                 <div id="hideInfo" className="flex visibility: hidden justify-center my-6 gap-x-4 shrink-0 lg:mt-0">
                   <button type="button" className="hideInfo text-blue-600 hover:bg-blue-600 border-gray-700 hover:text-white text-xs w-1/2 md:w-auto font-medium bg-gray-100 rounded-lg px-4 py-2.5">
-                    Скрыть дополнительные поля
+                    Убрать дополнительную информацию
                   </button>
                 </div>
-                <span className="visibility: hidden" id="moreInfo">
+                <span id="moreInfo" className="visibility: hidden">
+                  <span className="flex justify-center mb-10 font-bold items-center">История заболевания</span>
                   <div className="my-3 flex justify-between items-center gap-x-4">
                     <span className="flex items-center">В каком возрасте возник первый эпилептический приступ?</span>
                     <input name="addQ1" type="text" autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
@@ -59,52 +57,93 @@ module.exports = function Profile({
                   <hr />
                   <div className="my-3 flex justify-between items-center gap-x-4">
                     <span className="flex items-center">Устанавливался ли диагноз Эпилепсия?</span>
-                    <input name="addQ2" type="text" autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
+                    <select id="addQ2sel" name="addQ2" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm">
+                      <option>Да</option>
+                      <option>Нет</option>
+                      <option>Свой вариант</option>
+                    </select>
+                    <input id="addQ2inp" name="addQ2" type="text" autoComplete="text" className="visibility: hidden px-3 py-2 w-72 border shadow-sm rounded-md sm:text-sm" />
                   </div>
                   <hr />
                   <div className="my-3 flex justify-between items-center gap-x-4">
-                    <span className="flex items-center">У кого-либо из Ваших родственников установлен диагноз эпилепсия?</span>
-                    <input name="addQ3" type="text" autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
+                    <span className="flex items-center">У кого-либо из Ваших родственников возникали эпилептические приступы?</span>
+                    <select name="addQ3" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm">
+                      <option>Да</option>
+                      <option>Нет</option>
+                      <option>Не уверен</option>
+                    </select>
                   </div>
                   <hr />
                   <div className="my-3 flex justify-between items-center gap-x-4">
-                    <span className="flex items-center">Особенности перинатального анамнеза: Отмечались ли осложнения при Вашем вынашивании/родах?</span>
-                    <input name="addQ4" type="text" autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
+                    <span className="flex items-center">Отмечались ли осложнения при Вашем вынашивании/родах?</span>
+                    <select name="addQ4" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm">
+                      <option>Да</option>
+                      <option>Нет</option>
+                      <option>Не уверен</option>
+                    </select>
                   </div>
                   <hr />
                   <div className="my-3 flex justify-between items-center gap-x-4">
                     <span className="flex items-center">Отмечались ли задержки психомоторного развития в раннем детском периоде?</span>
-                    <input name="addQ5" type="text" autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
+                    <select name="addQ5" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm">
+                      <option>Да</option>
+                      <option>Нет</option>
+                      <option>Не уверен</option>
+                    </select>
                   </div>
                   <hr />
                   <div className="my-3 flex justify-between items-center gap-x-4">
                     <span className="flex items-center">Испытывали ли Вы судороги мышц на высокую температуру в детском возрасте?</span>
-                    <input name="addQ6" type="text" autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
+                    <select name="addQ6" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm">
+                      <option>Да</option>
+                      <option>Нет</option>
+                      <option>Не уверен</option>
+                    </select>
                   </div>
                   <hr />
                   <div className="my-3 flex justify-between items-center gap-x-4">
                     <span className="flex items-center">Есть ли иные неврологические заболевания?</span>
-                    <input name="addQ7" type="text" placeholder="Да/Нет/Свой вариант" autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
+                    <input name="addQ7" type="text" autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
                   </div>
                   <hr />
                   <div className="my-3 flex justify-between items-center gap-x-4">
+                    <span className="flex items-center">Проходили ли Вы хирургическое лечение от эпилепсии?</span>
+                    <select name="addQ8" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm">
+                      <option>Да</option>
+                      <option>Нет</option>
+                    </select>
+                  </div>
+                  <span className="flex justify-center my-10 font-bold items-center">Опросник по качеству жизни</span>
+                  <div className="my-3 flex justify-between items-center gap-x-4">
                     <span className="flex items-center">Отмечаете ли Вы такие симптомы как снижение концентрации внимания или ухудшение памяти?</span>
-                    <input name="addQ8" type="text" autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
+                    <select name="addQ9" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm">
+                      <option>Да</option>
+                      <option>Нет</option>
+                    </select>
                   </div>
                   <hr />
                   <div className="my-3 flex justify-between items-center gap-x-4">
                     <span className="flex items-center">Испытывали ли Вы сложности общении или социокультурном взаимодействии из-за установленного диагноза Эпилепсия?</span>
-                    <input name="addQ9" type="text" autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
+                    <select name="addQ10" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm">
+                      <option>Да</option>
+                      <option>Нет</option>
+                    </select>
                   </div>
                   <hr />
                   <div className="my-3 flex justify-between items-center gap-x-4">
-                    <span className="flex items-center">Как Вы справляетесь с эмоциональными и психологическими аспектами своего заболевания?</span>
-                    <input name="addQ10" type="text" autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
+                    <span className="flex items-center">Справляетесь ли Вы с эмоциональными и психологическими аспектами своего заболевания?</span>
+                    <select name="addQ11" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm">
+                      <option>Да</option>
+                      <option>Нет</option>
+                    </select>
                   </div>
                   <hr />
                   <div className="my-3 flex justify-between items-center gap-x-4">
                     <span className="flex items-center">Пользуетесь ли Вы транспортным средством в качестве водителя?</span>
-                    <input name="addQ11" type="text" autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
+                    <select name="addQ12" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm">
+                      <option>Да</option>
+                      <option>Нет</option>
+                    </select>
                   </div>
                 </span>
                 <div className="flex justify-center gap-x-4 shrink-0 lg:mt-0">

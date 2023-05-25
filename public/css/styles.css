@@ -736,6 +736,10 @@ select {
   z-index: 10;
 }
 
+.m-10 {
+  margin: 2.5rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -856,6 +860,10 @@ select {
 
 .mb-44 {
   margin-bottom: 11rem;
+}
+
+.mb-3 {
+  margin-bottom: 0.75rem;
 }
 
 .block {
