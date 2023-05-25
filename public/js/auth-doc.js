@@ -37,7 +37,7 @@ regForm?.addEventListener('submit', async (event) => {
       const response = await submitForm('/auth/doc/reg', event.target);
 
       if (response.status === 200) {
-        window.location.href = '/';
+        window.location.href = '/users/profile';
       } else {
         errorMessage(
           'Адрес электронной почты уже занят',
@@ -63,7 +63,7 @@ logForm?.addEventListener('submit', async (event) => {
       const response = await submitForm('/auth/doc/login', event.target);
 
       if (response.status === 200) {
-        window.location.href = '/';
+        window.location.href = '/users/profile';
       } else {
         errorMessage(
           'Неправильный адрес электронной почты или пароль',

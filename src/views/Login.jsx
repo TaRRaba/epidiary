@@ -80,7 +80,7 @@ module.exports = function Login({ title, doc }) {
                       ? (
                         <a href="/doc/reg" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">сюда</a>
                       ) : (
-                        <a href="/user/reg" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">сюда</a>
+                        <a href="/users/reg" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">сюда</a>
                       )
                 }
               </h2>
