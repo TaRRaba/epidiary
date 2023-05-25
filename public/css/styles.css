@@ -740,6 +740,10 @@ select {
   margin: 2.5rem;
 }
 
+.m-3 {
+  margin: 0.75rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -788,6 +792,16 @@ select {
 .my-10 {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
+}
+
+.mx-3 {
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
+
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
 }
 
 .mt-10 {
@@ -866,8 +880,28 @@ select {
   margin-bottom: 0.75rem;
 }
 
+.ml-3 {
+  margin-left: 0.75rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+.mb-\[0\.125rem\] {
+  margin-bottom: 0.125rem;
+}
+
+.box-content {
+  box-sizing: content-box;
+}
+
 .block {
   display: block;
+}
+
+.inline-block {
+  display: inline-block;
 }
 
 .flex {
@@ -920,6 +954,10 @@ select {
 
 .min-h-full {
   min-height: 100%;
+}
+
+.min-h-\[1\.5rem\] {
+  min-height: 1.5rem;
 }
 
 .w-auto {
@@ -1008,6 +1046,26 @@ select {
 
 .w-2\/5 {
   width: 40%;
+}
+
+.w-2 {
+  width: 0.5rem;
+}
+
+.w-24 {
+  width: 6rem;
+}
+
+.w-20 {
+  width: 5rem;
+}
+
+.w-16 {
+  width: 4rem;
+}
+
+.w-28 {
+  width: 7rem;
 }
 
 .max-w-6xl {
@@ -1343,6 +1401,14 @@ select {
   padding-top: 1.25rem;
 }
 
+.pl-\[0\.15rem\] {
+  padding-left: 0.15rem;
+}
+
+.pl-\[1\.5rem\] {
+  padding-left: 1.5rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1465,6 +1531,11 @@ select {
   color: rgb(37 99 235 / var(--tw-text-opacity));
 }
 
+.text-green-600 {
+  --tw-text-opacity: 1;
+  color: rgb(22 163 74 / var(--tw-text-opacity));
+}
+
 .placeholder-slate-400::-moz-placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(148 163 184 / var(--tw-placeholder-opacity));
@@ -1522,6 +1593,10 @@ select {
 .placeholder\:text-gray-400::placeholder {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
+.hover\:cursor-pointer:hover {
+  cursor: pointer;
 }
 
 .hover\:bg-indigo-500:hover {
@@ -1590,6 +1665,11 @@ select {
 .hover\:bg-blue-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-green-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
 }
 
 .hover\:text-indigo-500:hover {

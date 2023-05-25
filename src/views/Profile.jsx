@@ -15,16 +15,6 @@ module.exports = function Profile({
             <div className="flex-col">
               <form className="flex-col" action="/api/users/info" method="POST">
                 <input className="visibility: hidden" name="userID" value={id} />
-                {/* <div className="my-3 flex justify-between items-center gap-x-4">
-                  <span className="flex items-center">Как вас зовут?</span>
-                  <input name="fullName" type="text" placeholder="Фамилия Имя Отчество" required autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
-                </div>
-                <hr /> */}
-                {/* <div className="my-3 flex justify-between items-center gap-x-4">
-                  <span className="flex items-center">Какой у вас e-mail?</span>
-                  <input name="email" type="email" required value={`${email}`} autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
-                </div>
-                <hr /> */}
                 <div className="my-3 flex justify-between items-center gap-x-4">
                   <span className="flex items-center">Укажите ваш возраст:</span>
                   <input name="age" type="number" required autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
@@ -37,7 +27,6 @@ module.exports = function Profile({
                     <option>Женский</option>
                   </select>
                 </div>
-                <input id="extraInfo" className="visibility: hidden" name="extraInfo" value="false" />
                 <div id="addInfo" className="flex visibility: visible justify-center my-6 gap-x-4 shrink-0 lg:mt-0">
                   <button type="button" className="addInfo text-blue-600 hover:bg-blue-600 border-gray-700 hover:text-white text-xs w-1/2 md:w-auto font-medium bg-gray-100 rounded-lg px-4 py-2.5">
                     Добавить дополнительную информацию (не обязательно)
