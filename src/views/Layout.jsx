@@ -13,7 +13,7 @@ module.exports = function Layout({ user, children }) {
         <title>Эпидневник</title>
       </head>
 
-      <body className="h-full">
+      <body className="h-full bg-gray-200">
         <nav>
           <div className="bg-white">
             <div className="border py-3 px-6">
