@@ -1,6 +1,6 @@
 const React = require('react');
 
-module.exports = function Layout({ user, children }) {
+module.exports = function Layout({ user, children, title }) {
   return (
     <html className="h-full bg-white" lang="en">
       <head>
@@ -10,10 +10,10 @@ module.exports = function Layout({ user, children }) {
         <link rel="stylesheet" href="/css/styles.css" />
         <link rel="stylesheet" href="/css/normalize.css" />
         <script defer src="/js/application.js" />
-        <title>Эпидневник</title>
+        <title>{title}</title>
       </head>
 
-      <body className="h-full bg-gray-200">
+      <body className="h-full bg-gray-200 ">
         <nav>
           <div className="bg-white">
             <div className="border py-3 px-6">

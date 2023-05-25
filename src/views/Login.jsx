@@ -4,17 +4,17 @@ const Layout = require('./Layout');
 module.exports = function Login({ title, doc }) {
   return (
     <Layout title={title}>
-      <div className="logForm">
+      <div className="logForm w-96 p-4 mt-10 mx-auto border bg-white md:items-center border-gray-700 rounded-2xl">
 
         {
             doc
               ? (
                 <div className="logForm-head sm:mx-auto sm:w-full sm:max-w-sm">
-                  <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Вход в личный кабинет врача</h2>
+                  <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Вход в личный кабинет врача</h2>
                 </div>
               ) : (
                 <div className="logForm-head sm:mx-auto sm:w-full sm:max-w-sm">
-                  <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Вход</h2>
+                  <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Вход</h2>
                 </div>
               )
         }
@@ -73,7 +73,7 @@ module.exports = function Login({ title, doc }) {
 
             <div className="logForm-footer">
               <h2 className="mt-10 text-center text-sm text-gray-500">
-                Для авторизации нажнимте
+                Для регистрации нажнимте
                 {' '}
                 {
                     doc

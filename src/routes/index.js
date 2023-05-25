@@ -10,22 +10,22 @@ indexRouter.get('/', async (req, res) => {
 
 indexRouter.get('/user/login', (req, res) => {
   if (req.session.user) return res.redirect('/');
-  res.render(Login, { title: 'Login' });
+  res.render(Login, { title: 'Регистрация' });
 });
 
 indexRouter.get('/user/reg', (req, res) => {
   if (req.session.user) return res.redirect('/');
-  res.render(Registration, { title: 'Registration' });
+  res.render(Registration, { title: 'Регистрация' });
 });
 
 indexRouter.get('/doc/login', (req, res) => {
   if (req.session.user) return res.redirect('/');
-  res.render(Login, { title: 'Login', doc: true });
+  res.render(Login, { title: 'Вход', doc: true });
 });
 
 indexRouter.get('/doc/reg', (req, res) => {
   if (req.session.user) return res.redirect('/');
-  res.render(Registration, { title: 'Registration', doc: true });
+  res.render(Registration, { title: 'Регистрация', doc: true });
 });
 
 indexRouter.get('/user/logout', (req, res) => {
