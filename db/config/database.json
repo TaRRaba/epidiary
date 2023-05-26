@@ -1,6 +1,7 @@
 {
   "development": {
-    "use_env_variable": "DATABASE"
+    "use_env_variable": "DATABASE",
+    "dialect": "postgres"
   },
   "test": {
     "username": "root",

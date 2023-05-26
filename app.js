@@ -13,7 +13,10 @@ const patientDetails = require('./src/routes/patientDetails');
 const usersRouter = require('./src/routes/users');
 const usersApi = require('./src/routes/users.api');
 const indexRouter = require('./src/routes/index');
+
+const authRouter = require('./src/routes/auth.routes');
 const attackRouter = require("./src/routes/attack.routes");
+
 const ssr = require('./src/middleware/ssr');
 
 const app = express();
@@ -41,11 +44,15 @@ app.use(ssr);
 app.use(session(sessionConfig));
 
 app.use('/', indexRouter);
+
+app.use('/auth', authRouter);
+
 app.use('/profile', profileRouter);
 app.use('/profileDoc', profileDocRouter);
 app.use('/patientDetails', patientDetails);
 app.use('/users', usersRouter);
 app.use('/api/users', usersApi);
+
 
 // app.use(isAuth);
 app.use("/attack", attackRouter); // добавить в роут isAuth

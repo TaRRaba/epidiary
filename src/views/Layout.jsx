@@ -1,6 +1,6 @@
 const React = require('react');
 
-module.exports = function Layout({ user, children }) {
+module.exports = function Layout({ user, children, title }) {
   return (
     <html className="h-full bg-gray-200" lang="en">
       <head>
