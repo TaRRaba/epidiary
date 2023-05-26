@@ -42,7 +42,6 @@ router.post('/reg', async (req, res) => {
     );
     const user = await Users.findOne({ where: { email }, raw: true });
     req.session.user = user;
-    app.locals.form = 'false';
     res.sendStatus(200);
   } catch (error) {
     console.log(error);
