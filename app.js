@@ -7,6 +7,9 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
 const indexRouter = require('./src/routes/index');
+const profileRouter = require('./src/routes/profile.info');
+const profileDocRouter = require('./src/routes/profile.info.doc');
+const patientDetails = require('./src/routes/patientDetails');
 const ssr = require('./src/middleware/ssr');
 
 const app = express();
@@ -34,6 +37,9 @@ app.use(ssr);
 app.use(session(sessionConfig));
 
 app.use('/', indexRouter);
+app.use('/profile', profileRouter);
+app.use('/profileDoc', profileDocRouter);
+app.use('/patientDetails', patientDetails);
 
 app.get('*', (req, res) => {
   res.redirect('/');
