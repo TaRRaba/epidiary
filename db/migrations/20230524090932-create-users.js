@@ -23,6 +23,10 @@ module.exports = {
         type: Sequelize.STRING,
         defaultValue: 'user',
       },
+      form: {
+        type: Sequelize.STRING,
+        defaultValue: 'false',
+      },
       doctor_id: {
         type: Sequelize.INTEGER,
         defaultValue: 1,

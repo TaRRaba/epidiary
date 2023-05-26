@@ -4,14 +4,14 @@ module.exports = {
     await queryInterface.bulkInsert('Attacks', [{
       user_id: 1,
       attackInfo: JSON.stringify({
-        date: '15.05.2023',
+        outMind: 'Да',
         type: 'судорожный',
       }),
     },
     {
       user_id: 2,
       attackInfo: JSON.stringify({
-        date: '20.04.2023',
+        outMind: 'Нет',
         type: 'безсудорожный',
       }),
     }], {});
