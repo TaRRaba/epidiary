@@ -1,17 +1,15 @@
 const indexRouter = require('express').Router();
-const Layout = require('../views/Layout');
 const Login = require('../views/Login');
 const Registration = require('../views/Registration');
 
 indexRouter.get('/', async (req, res) => {
   if (!req.session.user) return res.redirect('/users/login');
   return res.redirect('/users/profile');
-  res.render(Layout, null);
 });
 
 indexRouter.get('/users/login', (req, res) => {
   if (req.session.user) return res.redirect('/');
-  res.render(Login, { title: 'Регистрация' });
+  res.render(Login, { title: 'Вход' });
 });
 
 indexRouter.get('/users/reg', (req, res) => {

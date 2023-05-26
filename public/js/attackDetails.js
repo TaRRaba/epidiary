@@ -354,7 +354,7 @@ attackInfoDiv?.addEventListener('click', async (event) => {
   }
 
   if (event.target.id === 'back') {
-    window.location = '/';
+    window.location = '/users/profile';
   }
 
   if (event.target.id === 'saveInfo') {
@@ -454,8 +454,8 @@ attackInfoDiv?.addEventListener('click', async (event) => {
       question20,
     };
 
-    const response = await fetch('/api/users/attacks/edit', {
-      method: 'POST',
+    const response = await fetch('/api/users/attacks', {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },

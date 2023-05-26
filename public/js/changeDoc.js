@@ -1,7 +1,6 @@
-const changeButton = document.querySelector('.changeButton');
+const changeButton = document.querySelector('#changeButtonId');
 
-
-changeButton.addEventListener('click', async (event) => {
+changeButton?.addEventListener('click', async (event) => {
   if (event.target.id === 'changeButtonId') {
     try {
       const response = await fetch('/profileDoc/data');
@@ -47,20 +46,20 @@ changeButton.addEventListener('click', async (event) => {
       }
       const { saveForm } = document.forms;
 
-      saveForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
+      saveForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
         const data = new FormData(saveForm);
         try {
-          const response = await fetch('/profileDoc/data', {
+          const response2 = await fetch('/profileDoc/data', {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(Object.fromEntries(data)),
           });
-          const result = await response;
-          if (result.ok) {
-            window.location.href = '/profileDoc';
+          const result2 = await response2;
+          if (result2.ok) {
+            window.location.href = `/profileDoc/${result.id}`;
           }
         } catch (error) {
           console.log(error);

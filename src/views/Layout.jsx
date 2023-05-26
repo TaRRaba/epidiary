@@ -1,6 +1,8 @@
 const React = require('react');
 
-module.exports = function Layout({ user, children, title }) {
+module.exports = function Layout({
+  user, userDoc, Docs, children,
+}) {
   return (
     <html className="h-full bg-gray-200" lang="en">
       <head>
@@ -9,7 +11,6 @@ module.exports = function Layout({ user, children, title }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="/css/styles.css" />
         <link rel="stylesheet" href="/css/normalize.css" />
-        {/* <script defer src="/js/application.js" /> */}
         <title>Эпидневник</title>
       </head>
 
@@ -25,14 +26,35 @@ module.exports = function Layout({ user, children, title }) {
                   <span className="ml-2 font-semibold text-[#252C32]">Эпидневник</span>
                 </a>
                 {user ? (
-                  <div className="ml-2 flex">
-                    <a href="/profile" className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:bg-[#4520aa]/10">
-                      <span className="text-sm font-medium">Личный кабинет</span>
-                    </a>
-                    <a href="/auth/logout" className="ml-2 flex cursor-pointer text-[#4520aa] items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-[#4520aa] hover:text-white">
-                      <span className="text-sm font-medium">Выход</span>
-                    </a>
-                  </div>
+                  <>
+                    {userDoc ? (
+                      <div className="docDiv">
+                        <span className="mr-1 text-[#252C32]">Ваш врач:</span>
+                        <span className="docValue visibility: visible self-center mr-3 font-semibold text-[#252C32]">{userDoc.fullName}</span>
+                        <select className="docSelect visibility: hidden mr-3 rounded-md">
+                          {Docs.map((el) => (
+                            <option>{el.fullName}</option>
+                          ))}
+                        </select>
+                        <button id="changeDoc" type="button" className="visibility: visible text-sm cursor-pointer rounded-lg bg-teal-500 px-4 py-1.5 text-white hover:bg-teal-600">Изменить</button>
+                        <button id="saveDoc" type="button" className="visibility: hidden text-sm cursor-pointer rounded-lg bg-green-700 px-4 py-1.5 text-white hover:bg-green-800">Сохранить</button>
+                      </div>
+                    ) : (null)}
+                    <div className="ml-2 flex">
+                      {user.type === 'user' ? (
+                        <a href={`/profile/${user.id}`} className="flex cursor-pointer border items-center gap-x-1 rounded-md py-2 px-4 hover:bg-blue-100">
+                          <span className="text-sm font-medium">Личный кабинет</span>
+                        </a>
+                      ) : (
+                        <a href={`/profileDoc/${user.id}`} className="flex cursor-pointer border items-center gap-x-1 rounded-md py-2 px-4 hover:bg-blue-100">
+                          <span className="text-sm font-medium">Личный кабинет</span>
+                        </a>
+                      )}
+                      <a href="/auth/logout" className="ml-2 flex cursor-pointer text-blue-700 items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-blue-700 hover:text-white">
+                        <span className="text-sm font-medium">Выход</span>
+                      </a>
+                    </div>
+                  </>
                 ) : (null)}
               </div>
             </div>

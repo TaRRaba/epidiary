@@ -1,18 +1,16 @@
-const changeButton = document.querySelector('.changeButton');
+const changeButton = document.querySelector('#changeButtonId');
 
-changeButton.addEventListener('click', async (event) => {
-  if (event.target.id === 'changeButtonId') {
-    try {
-      const response = await fetch('/profile/data');
-      const result = await response.json();
-      if (result) {
-        document.querySelector('.containerInfo').remove();
-        const newContainer = document.createElement('div');
-        newContainer.classList.add('containerInfo', 'items-center', 'flex', 'flex-col', 'justify-evenly', 'p-4', 'auto-cols-max');
-        const newDiv = `
-<div class="flex flex-col items-center">
-
-<div class="containerInfo items-center flex flex-col justify-evenly p-4 auto-cols-max">
+changeButton?.addEventListener('click', async () => {
+  try {
+    const response = await fetch('/profile/data');
+    const result = await response.json();
+    if (result) {
+      document.querySelector('.containerInfo').remove();
+      const newContainer = document.createElement('div');
+      newContainer.classList.add('containerInfo', 'items-center', 'flex', 'flex-col', 'justify-evenly', 'p-4', 'auto-cols-max');
+      const newDiv = `
+        <div class="flex flex-col items-center">
+        <div class="containerInfo items-center flex flex-col justify-evenly p-4 auto-cols-max">
 <form name="saveForm">
 
     <div class="mt-4">
@@ -36,8 +34,8 @@ changeButton.addEventListener('click', async (event) => {
     </select>
     </div>
 
-    <div>
-      <h5 class="font-bold">История заболевания</h5>
+    <div class="mt-5">
+      <h5 class="font-bold flex justify-around">История заболевания</h5>
     </div>
 
     <div class="mt-4">
@@ -52,18 +50,26 @@ changeButton.addEventListener('click', async (event) => {
       Устанавливался ли вам диагноз Эпилепсия?
     </h5>
     <select id='noneInput' name="addQ2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-      <option selected>${result.userInfo.addQ2}</option>
-      ${result.userInfo.addQ2 === 'Да' ? (
-    `<option>Нет</option>
-    <option>Свой вариант</option>`
-  ) : (
+    ${result.userInfo.addQ2 === 'Да' ? (
+
     `<option>Да</option>
-    <option>Нет</option>
-    <option>Свой вариант</option>`
+      <option>Нет</option>
+       <option>Свой вариант</option>`
+  ) : (
+    result.userInfo.addQ2 === 'Нет' ? (
+      `<option>Да</option>
+        <option>Нет</option>
+         <option>Свой вариант</option>`
+    ) : (
+      `<option></option>
+      <option>Да</option>
+      <option>Нет</option>
+      <option>Свой вариант</option>`
+    )
   )}
     </select>
     <div id="selectInput" style="display: none;">
-      <input type="text" value=${result.userInfo.addQ2} name="addQ2Inp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Введите свой вариант">
+      <input id="selectWork" value="" type="text" name="addQ2Inp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Введите свой вариант">
     </div>
   </div>
 
@@ -171,8 +177,8 @@ ${result.userInfo.addQ8 === 'Да' ? `
 </select>
 </div>
 
-<div>
-<h5 class="font-bold">История заболевания</h5>
+<div class="mt-5">
+<h5 class="font-bold flex justify-around">Опросник по качеству жизни</h5>
 </div>
 
 <div class="mt-4">
@@ -250,51 +256,52 @@ ${result.userInfo.addQ12 === 'Да' ? `
       </div>
       <input name="id" type="hidden" value="${result.id}"/>
       </form>
-
-    </div>
+      </div>
 `;
-        newContainer.innerHTML = newDiv;
-        const changeDiv = document.querySelector('.changeDiv');
-        changeDiv.appendChild(newContainer);
+      newContainer.innerHTML = newDiv;
+      const changeDiv = document.querySelector('.changeDiv');
+      changeDiv.appendChild(newContainer);
 
-        const noneInput = document.getElementById('noneInput');
-        const selectInput = document.getElementById('selectInput');
+      const noneInput = document.getElementById('noneInput');
+      const selectInput = document.getElementById('selectInput');
 
-        if (noneInput && selectInput) {
-          console.log(noneInput);
-
-          noneInput.addEventListener('change', () => {
-            if (noneInput.value === 'Свой вариант') {
-              selectInput.style.display = 'block';
-            } else {
-              selectInput.style.display = 'none';
-            }
-          });
-        }
+      if (noneInput.value !== 'Нет' && noneInput.value !== 'Да' && selectInput.value === '') {
+        selectInput.style.display = 'block';
+        document.querySelector('#selectWork').value = result.userInfo.addQ2;
       }
-      const { saveForm } = document.forms;
 
-      saveForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const data = new FormData(saveForm);
-        try {
-          const response2 = await fetch('/profile/data', {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(Object.fromEntries(data)),
-          });
-          const result2 = await response2;
-          if (result2.ok) {
-            window.location.href = '/profile';
+      if (noneInput && selectInput) {
+        noneInput.addEventListener('change', () => {
+          if (noneInput.value === 'Свой вариант') {
+            selectInput.style.display = 'block';
+          } else {
+            selectInput.style.display = 'none';
           }
-        } catch (error) {
-          console.log(error);
-        }
-      });
-    } catch (error) {
-      console.log(error);
+        });
+      }
     }
+    const { saveForm } = document.forms;
+
+    saveForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(saveForm);
+      try {
+        const response2 = await fetch('/profile/data', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(Object.fromEntries(data)),
+        });
+        const result2 = await response2;
+        if (result2.ok) {
+          window.location.href = `/profile/${result.id}`;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    });
+  } catch (error) {
+    console.log(error);
   }
 });

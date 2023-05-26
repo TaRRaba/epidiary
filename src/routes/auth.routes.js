@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const { Users, Doctors } = require('../../db/models');
+const isAuth = require('../middleware/isAuth');
 
 router.post('/login', async (req, res) => {
   try {
@@ -42,7 +43,6 @@ router.post('/reg', async (req, res) => {
     );
     const user = await Users.findOne({ where: { email }, raw: true });
     req.session.user = user;
-    app.locals.form = 'false';
     res.sendStatus(200);
   } catch (error) {
     console.log(error);
@@ -98,14 +98,14 @@ router.post('/doc/reg', async (req, res) => {
   }
 });
 
-router.get('/logout', (req, res) => {
+router.get('/logout', isAuth, (req, res) => {
   req.session.destroy((e) => {
     if (e) {
       console.log(e);
-      return;
+    } else {
+      res.clearCookie('ECook');
+      res.redirect('/users/login');
     }
-    res.clearCookie('ECook');
-    res.redirect('/');
   });
 });
 

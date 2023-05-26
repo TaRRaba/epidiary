@@ -5,7 +5,6 @@ const morgan = require('morgan');
 const path = require('path');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
-// const isAuth = require('./src/middleware/isAuth');
 
 const profileRouter = require('./src/routes/profile.info');
 const profileDocRouter = require('./src/routes/profile.info.doc');
@@ -50,7 +49,7 @@ app.use('/profileDoc', profileDocRouter);
 app.use('/patientDetails', patientDetails);
 app.use('/users', usersRouter);
 app.use('/api/users', usersApi);
-app.use('/attack', attackRouter); // добавить в роут isAuth
+app.use('/attack', attackRouter);
 
 app.get('*', (req, res) => {
   res.redirect('/');

@@ -24,34 +24,22 @@ const question20Select = document.querySelector('.question20Select');
 const question20Input = document.querySelector('.question20Input');
 //-------------------------------------------------------------------------------------
 
-attackForm?.addEventListener('click', async (event) => {
-  let question1;
-  let question3;
-  let question4;
-  let question6;
-  let question12;
-  let question17;
-  let question18;
-  let question20;
+let question1;
+let question3;
+let question4;
+let question6;
+let question12;
+let question17;
+let question18;
+let question20;
 
+attackForm?.addEventListener('change', () => {
   if (question1Select.value === 'Нет') {
     question1Input.classList.replace('hidden', 'visible');
     question1 = new Date(question1Input.value).toLocaleDateString('ru-RU');
   } else {
     question1Input.classList.replace('visible', 'hidden');
     question1 = new Date().toLocaleDateString('ru-RU');
-  }
-
-  if (event.target.dataset.info) {
-    additionalInfo.classList.replace('hidden', 'visible');
-    infoDivButton.classList.replace('visible', 'hidden');
-    hideDivButton.classList.replace('hidden', 'visible');
-  }
-
-  if (event.target.dataset.hide) {
-    additionalInfo.classList.replace('visible', 'hidden');
-    infoDivButton.classList.replace('hidden', 'visible');
-    hideDivButton.classList.replace('visible', 'hidden');
   }
 
   if (question3Select.value === 'Свой вариант') {
@@ -108,6 +96,26 @@ attackForm?.addEventListener('click', async (event) => {
   } else {
     question20Input.classList.replace('visible', 'hidden');
     question20 = question20Select.value;
+  }
+});
+
+attackForm?.addEventListener('click', async (event) => {
+  if (question1Select.value === 'Нет') {
+    question1 = new Date(question1Input.value).toLocaleDateString('ru-RU');
+  } else {
+    question1 = new Date().toLocaleDateString('ru-RU');
+  }
+
+  if (event.target.dataset.info) {
+    additionalInfo.classList.replace('hidden', 'visible');
+    infoDivButton.classList.replace('visible', 'hidden');
+    hideDivButton.classList.replace('hidden', 'visible');
+  }
+
+  if (event.target.dataset.hide) {
+    additionalInfo.classList.replace('visible', 'hidden');
+    infoDivButton.classList.replace('hidden', 'visible');
+    hideDivButton.classList.replace('visible', 'hidden');
   }
 
   if (event.target.dataset.save) {

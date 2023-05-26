@@ -1,22 +1,14 @@
 const router = require('express').Router();
 const AddAttack = require('../views/AddAttack');
-const AttackDetails = require('../views/AttackDetails');
+const isAuth = require('../middleware/isAuth');
 
 const { Attacks } = require('../../db/models');
 
-router.get('/', async (req, res) => {
-  const date = new Date().toLocaleDateString('ru-RU');
-  res.render(AddAttack, { date });
+router.get('/', isAuth, async (req, res) => {
+  res.render(AddAttack, null);
 });
 
-// router.get('/:id', async (req, res) => {
-//   const { id } = req.params;
-//   const data = (await Attacks.findOne({ where: { id } })).get({ plain: true });
-//   res.render(AttackDetails, { data });
-// });
-
-// запись нового приступа в базу ---------------------------
-router.post('/', async (req, res) => {
+router.post('/', isAuth, async (req, res) => {
   const { id } = req.session.user;
   try {
     await Attacks.create({
@@ -27,6 +19,16 @@ router.post('/', async (req, res) => {
   } catch (error) {
     console.log(error);
     res.json({ status: 405 });
+  }
+});
+
+router.delete('/', isAuth, async (req, res) => {
+  const { id } = req.body;
+  try {
+    await Attacks.destroy({ where: { id } });
+    res.json({ status: 200 });
+  } catch (error) {
+    console.log(error);
   }
 });
 

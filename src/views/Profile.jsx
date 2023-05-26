@@ -1,10 +1,11 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-module.exports = function Profile({ id, user, data }) {
-  console.log(user);
+module.exports = function Profile({
+  id, user, userDoc, Docs, data,
+}) {
   return (
-    <Layout user={user}>
+    <Layout user={user} userDoc={userDoc} Docs={Docs}>
       {user && user.type === 'user' ? (
         <span>
           {user.form === 'false' ? (
@@ -16,7 +17,7 @@ module.exports = function Profile({ id, user, data }) {
                     <input className="visibility: hidden" name="userID" value={id} />
                     <div className="my-3 flex justify-between items-center gap-x-4">
                       <span className="flex items-center">Укажите ваш возраст:</span>
-                      <input name="age" type="number" required autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
+                      <input name="birthDate" type="number" required autoComplete="text" className="px-3 py-2 w-72 border md:flex shadow-sm block rounded-md sm:text-sm" />
                     </div>
                     <hr />
                     <div className="my-3 flex justify-between items-center gap-x-4">
@@ -27,12 +28,12 @@ module.exports = function Profile({ id, user, data }) {
                       </select>
                     </div>
                     <div id="addInfo" className="flex visibility: visible justify-center my-6 gap-x-4 shrink-0 lg:mt-0">
-                      <button type="button" className="addInfo text-blue-600 hover:bg-blue-600 border-gray-700 hover:text-white text-xs w-1/2 md:w-auto font-medium bg-gray-100 rounded-lg px-4 py-2.5">
+                      <button type="button" className="addInfo text-white hover:bg-blue-500 border-gray-700 text-xs w-1/2 md:w-auto font-medium bg-blue-600 rounded-lg px-4 py-2.5">
                         Добавить дополнительную информацию (не обязательно)
                       </button>
                     </div>
                     <div id="hideInfo" className="flex visibility: hidden justify-center my-6 gap-x-4 shrink-0 lg:mt-0">
-                      <button type="button" className="hideInfo text-blue-600 hover:bg-blue-600 border-gray-700 hover:text-white text-xs w-1/2 md:w-auto font-medium bg-gray-100 rounded-lg px-4 py-2.5">
+                      <button type="button" className="hideInfo text-white hover:bg-blue-500 border-gray-700 text-xs w-1/2 md:w-auto font-medium bg-blue-600 rounded-lg px-4 py-2.5">
                         Убрать дополнительную информацию
                       </button>
                     </div>
@@ -135,7 +136,7 @@ module.exports = function Profile({ id, user, data }) {
                       </div>
                     </span>
                     <div className="flex justify-center gap-x-4 shrink-0 lg:mt-0">
-                      <button type="submit" className="text-blue-600 hover:bg-blue-600 border-gray-700 hover:text-white text-xs w-1/2 md:w-auto font-medium bg-gray-100 rounded-lg px-4 py-2.5">
+                      <button type="submit" className="text-white hover:bg-blue-500 border-gray-700 text-xs w-1/2 md:w-auto font-medium bg-blue-600 rounded-lg px-4 py-2.5">
                         Cохранить
                       </button>
                     </div>
@@ -150,9 +151,9 @@ module.exports = function Profile({ id, user, data }) {
                 <a href="/attack/" className="flex justify-center w-50 cursor-pointer rounded-md py-2 px-4 text-gray-100 text-lg font-medium bg-blue-700 hover:bg-blue-500">Добавить приступ</a>
               </div>
               <div className="flex justify-center">
-                <div className="flex grid grid-cols-3 p-8">
-                  {data && data.map(({ id, createdAt, attackInfo }) => (
-                    <div className="my-4 mx-10 flex flex-col">
+                <div className="attContainer flex grid grid-cols-3 p-8">
+                  {data && data.map(({ id, attackInfo }) => (
+                    <div key={id} className="my-4 mx-10 flex flex-col">
                       <div className="flex flex-col">
                         <div className="flex-1 w-96 bg-white rounded-lg shadow-xl p-8">
                           <h4 className="text-md mb-10 text-gray-900 font-bold">Приступ</h4>
@@ -168,6 +169,7 @@ module.exports = function Profile({ id, user, data }) {
                           </ul>
                           <div className="flex justify-center gap-4">
                             <a href={`/users/attacks/${id}`} className="text-sm justify-center cursor-pointer rounded-lg bg-gray-500 px-4 py-1.5 text-white hover:bg-gray-600">Подробнее</a>
+                            <div id={id} className="attDelBtn text-sm justify-center cursor-pointer rounded-lg bg-red-600 px-4 py-1.5 text-white hover:bg-red-500">Удалить</div>
                           </div>
                         </div>
                       </div>
@@ -189,7 +191,7 @@ module.exports = function Profile({ id, user, data }) {
                 <div className="my-2 mx-10 flex">
                   <div className="flex">
                     <div className="flex-1 w-96 bg-white rounded-lg shadow-xl p-8">
-                      <h4 className="text-md mb-10 text-gray-900 font-bold">{userInfo.fullName}</h4>
+                      <h4 className="text-md mb-10 text-gray-900 font-bold">{`Пациент № ${id}`}</h4>
                       <ul className="mt-2 mb-5 text-gray-700">
                         <li className="flex border-b justify-between py-2">
                           <span className="font-bold flex items-center w-44">E-mail:</span>
@@ -209,7 +211,7 @@ module.exports = function Profile({ id, user, data }) {
                         </li>
                       </ul>
                       <div className="flex justify-center gap-4">
-                        <a href={`/attacks/${id}`} className="text-sm justify-center cursor-pointer rounded-lg bg-gray-500 px-4 py-1.5 text-white hover:bg-gray-600">Подробнее</a>
+                        <a href={`/patientDetails/${id}`} className="text-sm justify-center cursor-pointer rounded-lg bg-gray-500 px-4 py-1.5 text-white hover:bg-gray-600">Подробнее</a>
                       </div>
                     </div>
                   </div>

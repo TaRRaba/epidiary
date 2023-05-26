@@ -1,13 +1,14 @@
 const indexRouter = require('express').Router();
 const Patiecient = require('../views/Patient');
+const isAuth = require('../middleware/isAuth');
 
-const { Attacks, Doctors, Users } = require('../../db/models');
+const { Attacks, Users } = require('../../db/models');
 
-indexRouter.get('/', async (req, res) => {
-  // ? req.session.id чтобы можно было достать данные с бд
+indexRouter.get('/:id', isAuth, async (req, res) => {
+  const { id } = req.params;
   // ? пока работаем с первым id
   try {
-    const dataInfo = await Users.findOne({ where: { id: 1 } });
+    const dataInfo = await Users.findOne({ where: { id } });
 
     const dataInfo2 = await Attacks.findAll({ where: { user_id: dataInfo.id } });
 
