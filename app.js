@@ -6,7 +6,16 @@ const path = require('path');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
+const profileRouter = require('./src/routes/profile.info');
+const profileDocRouter = require('./src/routes/profile.info.doc');
+const patientDetails = require('./src/routes/patientDetails');
+const usersRouter = require('./src/routes/users');
+const usersApi = require('./src/routes/users.api');
 const indexRouter = require('./src/routes/index');
+
+const authRouter = require('./src/routes/auth.routes');
+const attackRouter = require('./src/routes/attack.routes');
+
 const ssr = require('./src/middleware/ssr');
 
 const app = express();
@@ -34,6 +43,13 @@ app.use(ssr);
 app.use(session(sessionConfig));
 
 app.use('/', indexRouter);
+app.use('/auth', authRouter);
+app.use('/profile', profileRouter);
+app.use('/profileDoc', profileDocRouter);
+app.use('/patientDetails', patientDetails);
+app.use('/users', usersRouter);
+app.use('/api/users', usersApi);
+app.use('/attack', attackRouter);
 
 app.get('*', (req, res) => {
   res.redirect('/');
