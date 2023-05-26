@@ -42,6 +42,7 @@ router.post('/reg', async (req, res) => {
     );
     const user = await Users.findOne({ where: { email }, raw: true });
     req.session.user = user;
+    app.locals.form = 'false';
     res.sendStatus(200);
   } catch (error) {
     console.log(error);
@@ -95,6 +96,17 @@ router.post('/doc/reg', async (req, res) => {
     console.log(error);
     res.sendStatus(401);
   }
+});
+
+router.get('/logout', (req, res) => {
+  req.session.destroy((e) => {
+    if (e) {
+      console.log(e);
+      return;
+    }
+    res.clearCookie('ECook');
+    res.redirect('/');
+  });
 });
 
 module.exports = router;

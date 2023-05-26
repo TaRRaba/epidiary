@@ -2,7 +2,6 @@ const React = require('react');
 const Layout = require('./Layout');
 
 module.exports = function ProfileInfo({ user, dataUser }) {
-
   function convertTimeRu(date) {
     const dateRes = new Date(date);
     return dateRes.toLocaleDateString('ru-RU');
@@ -38,14 +37,14 @@ module.exports = function ProfileInfo({ user, dataUser }) {
             <h5 className="font-bold">История заболевания</h5>
           </div>
 
-          {dataUser.userInfo.question1
+          {dataUser.userInfo.addQ1
             ? (
               <div className="mt-4">
 
                 <h5>
                   В каком возрасте возник первый эпилептический приступ?
                   {' '}
-                  {dataUser.userInfo.question1}
+                  {dataUser.userInfo.addQ1}
                 </h5>
               </div>
             ) : (
@@ -57,13 +56,13 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                 </h5>
               </div>
             )}
-          {dataUser.userInfo.question2
+          {dataUser.userInfo.addQ2
             ? (
               <div className="mt-4">
                 <h5>
                   Устанавливался ли вам диагноз Эпилепсия ?
                   {' '}
-                  {dataUser.userInfo.question2}
+                  {dataUser.userInfo.addQ2}
                 </h5>
               </div>
             ) : (
@@ -76,13 +75,13 @@ module.exports = function ProfileInfo({ user, dataUser }) {
               </div>
             )}
 
-          {dataUser.userInfo.question3
+          {dataUser.userInfo.addQ3
             ? (
               <div className="mt-4">
                 <h5>
                   У кого-либо из Ваших родственников возникали эпилептические приступы ?
                   {' '}
-                  {dataUser.userInfo.question3}
+                  {dataUser.userInfo.addQ3}
                 </h5>
               </div>
             ) : (
@@ -95,13 +94,13 @@ module.exports = function ProfileInfo({ user, dataUser }) {
               </div>
             )}
 
-          {dataUser.userInfo.question4
+          {dataUser.userInfo.addQ4
             ? (
               <div className="mt-4">
                 <h5>
                   Отмечали ли осложнения при Вашем вынашевании/родах?
                   {' '}
-                  {dataUser.userInfo.question4}
+                  {dataUser.userInfo.addQ4}
                 </h5>
               </div>
             ) : (
@@ -114,13 +113,13 @@ module.exports = function ProfileInfo({ user, dataUser }) {
               </div>
             )}
 
-          {dataUser.userInfo.question5
+          {dataUser.userInfo.addQ5
             ? (
               <div className="mt-4">
                 <h5>
                   Отмечались ли задержки психомоторного развития в раннем детском периоде?
                   {' '}
-                  {dataUser.userInfo.question5}
+                  {dataUser.userInfo.addQ5}
                 </h5>
               </div>
             ) : (
@@ -133,13 +132,13 @@ module.exports = function ProfileInfo({ user, dataUser }) {
               </div>
             )}
 
-          {dataUser.userInfo.question6
+          {dataUser.userInfo.addQ6
             ? (
               <div className="mt-4">
                 <h5>
                   Испытывали ли Вы судороги мышц на высокую температуру в детском возрасте?
                   {' '}
-                  {dataUser.userInfo.question6}
+                  {dataUser.userInfo.addQ6}
                 </h5>
               </div>
             ) : (
@@ -152,13 +151,13 @@ module.exports = function ProfileInfo({ user, dataUser }) {
               </div>
             )}
 
-          {dataUser.userInfo.question7
+          {dataUser.userInfo.addQ7
             ? (
               <div className="mt-4">
                 <h5>
                   Есть ли иные неврологические заболевания?
                   {' '}
-                  {dataUser.userInfo.question7}
+                  {dataUser.userInfo.addQ7}
                 </h5>
               </div>
             ) : (
@@ -171,13 +170,13 @@ module.exports = function ProfileInfo({ user, dataUser }) {
               </div>
             )}
 
-          {dataUser.userInfo.question8
+          {dataUser.userInfo.addQ8
             ? (
               <div className="mt-4">
                 <h5>
                   Проходили ли Вы хирургическое лечение от эпилепсии?
                   {' '}
-                  {dataUser.userInfo.question8}
+                  {dataUser.userInfo.addQ8}
                 </h5>
               </div>
             ) : (
@@ -194,13 +193,13 @@ module.exports = function ProfileInfo({ user, dataUser }) {
             <h5 className="font-bold">История заболевания</h5>
           </div>
 
-          {dataUser.userInfo.question9
+          {dataUser.userInfo.addQ9
             ? (
               <div className="mt-4">
                 <h5>
                   Отмечаете ли Вы такие симптомы как снижение концентрации внимания или ухудшение памяти?
                   {' '}
-                  {dataUser.userInfo.question9}
+                  {dataUser.userInfo.addQ9}
                 </h5>
               </div>
             ) : (
@@ -213,13 +212,13 @@ module.exports = function ProfileInfo({ user, dataUser }) {
               </div>
             )}
 
-          {dataUser.userInfo.question10
+          {dataUser.userInfo.addQ10
             ? (
               <div className="mt-4">
                 <h5>
                   Испытывали ли Вы сложности общении или социокультурном взаимодействии из-за установленного диагноза Эпилепсия?
                   {' '}
-                  {dataUser.userInfo.question10}
+                  {dataUser.userInfo.addQ10}
                 </h5>
               </div>
             ) : (
@@ -232,13 +231,13 @@ module.exports = function ProfileInfo({ user, dataUser }) {
               </div>
             )}
 
-          {dataUser.userInfo.question11
+          {dataUser.userInfo.addQ11
             ? (
               <div className="mt-4">
                 <h5>
                   Справляетесь ли Вы с эмоциональными и психологическими аспектами своего заболевания?
                   {' '}
-                  {dataUser.userInfo.question11}
+                  {dataUser.userInfo.addQ11}
                 </h5>
               </div>
             ) : (
@@ -251,13 +250,13 @@ module.exports = function ProfileInfo({ user, dataUser }) {
               </div>
             )}
 
-          {dataUser.userInfo.question12
+          {dataUser.userInfo.addQ12
             ? (
               <div className="mt-4">
                 <h5>
                   Пользуетесь ли Вы транспортным средством в качестве водителя?
                   {' '}
-                  {dataUser.userInfo.question12}
+                  {dataUser.userInfo.addQ12}
                 </h5>
               </div>
             ) : (

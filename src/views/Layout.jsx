@@ -26,23 +26,14 @@ module.exports = function Layout({ user, children, title }) {
                 </a>
                 {user ? (
                   <div className="ml-2 flex">
-                    <a href={`/users/profile/${user.id}`} className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:bg-[#4520aa]/10">
+                    <a href="/profile" className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:bg-[#4520aa]/10">
                       <span className="text-sm font-medium">Личный кабинет</span>
                     </a>
-                    <a href="/users/logout" className="ml-2 flex cursor-pointer text-[#4520aa] items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-[#4520aa] hover:text-white">
+                    <a href="/auth/logout" className="ml-2 flex cursor-pointer text-[#4520aa] items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-[#4520aa] hover:text-white">
                       <span className="text-sm font-medium">Выход</span>
                     </a>
                   </div>
-                ) : (
-                  <div className="ml-2 flex">
-                    <a href="/users/profile" className="ml-2 flex cursor-pointer text-[#4520aa] items-center gap-x-1 rounded-md border py-2 px-4 text-blue-600 hover:bg-blue-600 hover:text-white">
-                      <span className="text-sm font-medium">Личный кабинет</span>
-                    </a>
-                    <a href="/users/logout" className="ml-2 flex cursor-pointer text-[#4520aa] items-center gap-x-1 rounded-md border py-2 px-4 text-blue-600 hover:bg-blue-600 hover:text-white">
-                      <span className="text-sm font-medium">Выход</span>
-                    </a>
-                  </div>
-                )}
+                ) : (null)}
               </div>
             </div>
           </div>

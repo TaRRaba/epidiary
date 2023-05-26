@@ -28,10 +28,10 @@ changeButton.addEventListener('click', async (event) => {
       </h5>
       <select name="gender" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
       <option selected>${result.userInfo.gender}</option>
-      ${result.userInfo.gender === 'Мужчина' ? (
-    '<option>Женщина</option>'
+      ${result.userInfo.gender === 'Мужской' ? (
+    '<option>Женский</option>'
   ) : (
-    '<option>Мужчина</option>'
+    '<option>Мужской</option>'
   )}
     </select>
     </div>
@@ -44,16 +44,16 @@ changeButton.addEventListener('click', async (event) => {
       <h5 class="mb-2">
         В каком возрасте возник первый эпилептический приступ?
       </h5>
-      <input name='question1' value="${result.userInfo.question1 ? result.userInfo.question1 : ''}" type="number" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+      <input name='addQ1' value="${result.userInfo.addQ1 ? result.userInfo.addQ1 : ''}" type="number" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
     </div>
 
     <div class="mt-4">
     <h5 class="mb-2">
       Устанавливался ли вам диагноз Эпилепсия?
     </h5>
-    <select id='noneInput' name="question2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-      <option selected>${result.userInfo.question2}</option>
-      ${result.userInfo.question2 === 'Да' ? (
+    <select id='noneInput' name="addQ2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+      <option selected>${result.userInfo.addQ2}</option>
+      ${result.userInfo.addQ2 === 'Да' ? (
     `<option>Нет</option>
     <option>Свой вариант</option>`
   ) : (
@@ -63,7 +63,7 @@ changeButton.addEventListener('click', async (event) => {
   )}
     </select>
     <div id="selectInput" style="display: none;">
-      <input type="text" name="question2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Введите свой вариант">
+      <input type="text" value=${result.userInfo.addQ2} name="addQ2Inp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Введите свой вариант">
     </div>
   </div>
 
@@ -71,12 +71,12 @@ changeButton.addEventListener('click', async (event) => {
       <h5 class="mb-2">
       У кого-либо из Ваших родственников возникали эпилептические приступы?
       </h5>
-      <select name="question3" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-      <option selected>${result.userInfo.question3}</option>
-      ${result.userInfo.question3 === 'Да' ? `
+      <select name="addQ3" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+      <option selected>${result.userInfo.addQ3}</option>
+      ${result.userInfo.addQ3 === 'Да' ? `
         <option>Нет</option>
         <option>Не уверен</option>
-      ` : result.userInfo.question3 === 'Нет' ? `
+      ` : result.userInfo.addQ3 === 'Нет' ? `
         <option>Да</option>
         <option>Не уверен</option>
       ` : `
@@ -91,12 +91,12 @@ changeButton.addEventListener('click', async (event) => {
       <h5 class="mb-2">
       Отмечали ли осложнения при Вашем вынашевании/родах?
       </h5>
-      <select name="question4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-      <option selected>${result.userInfo.question4}</option>
-      ${result.userInfo.question4 === 'Да' ? `
+      <select name="addQ4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+      <option selected>${result.userInfo.addQ4}</option>
+      ${result.userInfo.addQ4 === 'Да' ? `
         <option>Нет</option>
         <option>Не уверен</option>
-      ` : result.userInfo.question4 === 'Нет' ? `
+      ` : result.userInfo.addQ4 === 'Нет' ? `
         <option>Да</option>
         <option>Не уверен</option>
       ` : `
@@ -111,12 +111,12 @@ changeButton.addEventListener('click', async (event) => {
     <h5 class="mb-2">
     Отмечались ли задержки психомоторного развития в раннем детском периоде?
     </h5>
-    <select name="question5" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-    <option selected>${result.userInfo.question5}</option>
-    ${result.userInfo.question5 === 'Да' ? `
+    <select name="addQ5" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    <option selected>${result.userInfo.addQ5}</option>
+    ${result.userInfo.addQ5 === 'Да' ? `
     <option>Нет</option>
     <option>Не уверен</option>
-  ` : result.userInfo.question5 === 'Нет' ? `
+  ` : result.userInfo.addQ5 === 'Нет' ? `
     <option>Да</option>
     <option>Не уверен</option>
   ` : `
@@ -131,12 +131,12 @@ changeButton.addEventListener('click', async (event) => {
   <h5 class="mb-2">
   Испытывали ли Вы судороги мышц на высокую температуру в детском возрасте?
   </h5>
-  <select name="question6<option>Да</option>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-  <option selected>${result.userInfo.question6}</option>
-  ${result.userInfo.question6 === 'Да' ? `
+  <select name="addQ6" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+  <option selected>${result.userInfo.addQ6}</option>
+  ${result.userInfo.addQ6 === 'Да' ? `
   <option>Нет</option>
   <option>Не уверен</option>
-` : result.userInfo.question6 === 'Нет' ? `
+` : result.userInfo.addQ6 === 'Нет' ? `
   <option>Да</option>
   <option>Не уверен</option>
 ` : `
@@ -151,18 +151,18 @@ changeButton.addEventListener('click', async (event) => {
 <h5 class="mb-2">
 Есть ли иные неврологические заболевания?
 </h5>
-<input name='question7' value="${result.userInfo.question7 ? result.userInfo.question7 : ''}" type="text" id="first_name" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+<input name='addQ7' value="${result.userInfo.addQ7 ? result.userInfo.addQ7 : ''}" type="text" id="first_name" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
 </div>
 
 <div class="mt-4">
 <h5 class="mb-2">
 Проходили ли Вы хирургическое лечение от эпилепсии?
 </h5>
-<select name="question8" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-<option selected>${result.userInfo.question8}</option>
-${result.userInfo.question8 === 'Да' ? `
+<select name="addQ8" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+<option selected>${result.userInfo.addQ8}</option>
+${result.userInfo.addQ8 === 'Да' ? `
 <option>Нет</option>
-` : result.userInfo.question8 === 'Нет' ? `
+` : result.userInfo.addQ8 === 'Нет' ? `
 <option>Да</option>
 ` : `
 <option>Да</option>
@@ -179,10 +179,11 @@ ${result.userInfo.question8 === 'Да' ? `
 <h5 class="mb-2">
 Отмечаете ли Вы такие симптомы как снижение концентрации внимания или ухудшение памяти?
 </h5>
-<select name="question9" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-${result.userInfo.question9 === 'Да' ? `
+<select name="addQ9" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+<option selected>${result.userInfo.addQ9}</option>
+${result.userInfo.addQ9 === 'Да' ? `
 <option>Нет</option>
-` : result.userInfo.question9 === 'Нет' ? `
+` : result.userInfo.addQ9 === 'Нет' ? `
 <option>Да</option>
 ` : `
 <option>Да</option>
@@ -195,11 +196,11 @@ ${result.userInfo.question9 === 'Да' ? `
 <h5 class="mb-2">
 Испытывали ли Вы сложности общении или социокультурном взаимодействии из-за установленного диагноза Эпилепсия?
 </h5>
-<select name="question10" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-<option selected>${result.userInfo.question10}</option>
-${result.userInfo.question10 === 'Да' ? `
+<select name="addQ10" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+<option selected>${result.userInfo.addQ10}</option>
+${result.userInfo.addQ10 === 'Да' ? `
 <option>Нет</option>
-` : result.userInfo.question10 === 'Нет' ? `
+` : result.userInfo.addQ10 === 'Нет' ? `
 <option>Да</option>
 ` : `
 <option>Да</option>
@@ -212,11 +213,11 @@ ${result.userInfo.question10 === 'Да' ? `
 <h5 class="mb-2">
 Справляетесь ли Вы с эмоциональными и психологическими аспектами своего заболевания?
 </h5>
-<select name="question11" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-<option selected>${result.userInfo.question11}</option>
-${result.userInfo.question11 === 'Да' ? `
+<select name="addQ11" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+<option selected>${result.userInfo.addQ11}</option>
+${result.userInfo.addQ11 === 'Да' ? `
 <option>Нет</option>
-` : result.userInfo.question11 === 'Нет' ? `
+` : result.userInfo.addQ11 === 'Нет' ? `
 <option>Да</option>
 ` : `
 <option>Да</option>
@@ -229,11 +230,11 @@ ${result.userInfo.question11 === 'Да' ? `
 <h5 class="mb-2">
 Пользуетесь ли Вы транспортным средством в качестве водителя?
 </h5>
-<select name="question12" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-<option selected>${result.userInfo.question12}</option>
-${result.userInfo.question12 === 'Да' ? `
+<select name="addQ12" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+<option selected>${result.userInfo.addQ12}</option>
+${result.userInfo.addQ12 === 'Да' ? `
 <option>Нет</option>
-` : result.userInfo.question12 === 'Нет' ? `
+` : result.userInfo.addQ12 === 'Нет' ? `
 <option>Да</option>
 ` : `
 <option>Да</option>
@@ -273,19 +274,19 @@ ${result.userInfo.question12 === 'Да' ? `
       }
       const { saveForm } = document.forms;
 
-      saveForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
+      saveForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
         const data = new FormData(saveForm);
         try {
-          const response = await fetch('/profile/data', {
+          const response2 = await fetch('/profile/data', {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(Object.fromEntries(data)),
           });
-          const result = await response;
-          if (result.ok) {
+          const result2 = await response2;
+          if (result2.ok) {
             window.location.href = '/profile';
           }
         } catch (error) {

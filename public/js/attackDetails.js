@@ -358,14 +358,42 @@ attackInfoDiv?.addEventListener('click', async (event) => {
   }
 
   if (event.target.id === 'saveInfo') {
-    question1 = question1Input.value;
-    question3 = question3Input.value;
-    question4 = question4Input.value;
-    question6 = question6Input.value;
-    question12 = question12Input.value;
-    question17 = question17Input.value;
-    question18 = question18Input.value;
-    question20 = question20Input.value;
+    question1 = new Date(question1Input.value).toLocaleDateString('ru-RU');
+    if (question3Input.classList.contains('visible')) {
+      question3 = question3Input.value;
+    } else {
+      question3 = question3Select.value;
+    }
+    if (question4Input.classList.contains('visible')) {
+      question4 = question4Input.value;
+    } else {
+      question4 = question4Select.value;
+    }
+    if (question6Input.classList.contains('visible')) {
+      question6 = question6Input.value;
+    } else {
+      question6 = question6Select.value;
+    }
+    if (question12Input.classList.contains('visible')) {
+      question12 = question12Input.value;
+    } else {
+      question12 = question12Select.value;
+    }
+    if (question17Input.classList.contains('visible')) {
+      question17 = question17Input.value;
+    } else {
+      question17 = question17Select.value;
+    }
+    if (question18Input.classList.contains('visible')) {
+      question18 = question18Input.value;
+    } else {
+      question18 = question18Select.value;
+    }
+    if (question20Input.classList.contains('visible')) {
+      question20 = question20Input.value;
+    } else {
+      question20 = question20Select.value;
+    }
     const question2 = document.querySelector('.question2Select').value.trim();
     const question5 = document.querySelector('.question5Input').value.trim();
     const question8 = `${document.querySelector('.question8Input').value} ${
@@ -436,7 +464,7 @@ attackInfoDiv?.addEventListener('click', async (event) => {
     const result = await response.json();
 
     if (result.status === 'ok') {
-      window.location = '/';
+      window.location = `/users/attacks/${attackID.id}`;
     } else {
       alert('Не удалось добавить приступ!');
     }

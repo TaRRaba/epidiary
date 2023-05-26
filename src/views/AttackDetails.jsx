@@ -9,7 +9,7 @@ module.exports = function AttackDetails({ data, user }) {
           <div className="attackInfoDiv">
             <div>
               <p className="text-2xl">Информация о приступе</p>
-              <p className="mt-1 text-sm text-gray-500">{`Дата приступа: ${new Date(data?.createdAt).toLocaleDateString('ru-RU')}`}</p>
+              <p className="mt-1 text-sm text-gray-500">{`Дата приступа: ${data.attackInfo.question1}`}</p>
 
             </div>
             <hr className="mt-2 mb-5" />

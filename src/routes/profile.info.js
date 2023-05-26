@@ -4,11 +4,11 @@ const ProfileInfo = require('../views/ProfileInfo');
 const { Attack, Doctor, Users } = require('../../db/models');
 
 indexRouter.get('/', async (req, res) => {
-  // ? req.session.id чтобы можно было достать данные с бд
+  const { id } = req.session.user;
   // ? пока работаем с первым id
   try {
-    const dataInfo = await Users.findOne({ where: { id: 1 } });
-    const dataUser = dataInfo.get({ plain: true });
+    const dataInfo = (await Users.findOne({ where: { id } })).get({ plain: true });
+    const dataUser = dataInfo;
     res.render(ProfileInfo, { dataUser });
   } catch (error) {
     console.log(error);
@@ -16,10 +16,10 @@ indexRouter.get('/', async (req, res) => {
 });
 
 indexRouter.get('/data', async (req, res) => {
-  // ? req.session.id чтобы можно было достать данные с бд
+  const { id } = req.session.user;
   // ? пока работаем с первым id
   try {
-    const dataInfo = await Users.findOne({ where: { id: 1 } });
+    const dataInfo = await Users.findOne({ where: { id } });
     const dataUser = dataInfo.get({ plain: true });
     res.json(dataUser);
   } catch (error) {
@@ -28,35 +28,34 @@ indexRouter.get('/data', async (req, res) => {
 });
 
 indexRouter.put('/data', async (req, res) => {
-  // ? req.session.id чтобы можно было достать данные с бд
+  const { id } = req.session.user;
   // ? пока работаем с первым id
   const {
-    id, fullName, birthDate, gender, question1, question2, question3, question4, question5, question6, question7, question8, question9,
-    question10, question11, question12
+    birthDate, gender, addQ1, addQ2, addQ2Inp, addQ3, addQ4, addQ5, addQ6, addQ7, addQ8, addQ9,
+    addQ10, addQ11, addQ12,
   } = req.body;
+  console.log('MOTHERFUCKER', req.body);
+  const userInfo = {
+    birthDate,
+    gender,
+    addQ1,
+    addQ2,
+    addQ3,
+    addQ4,
+    addQ5,
+    addQ6,
+    addQ7,
+    addQ8,
+    addQ9,
+    addQ10,
+    addQ11,
+    addQ12,
+  };
+  if (addQ2Inp !== '') {
+    sendData.addQ2 = addQ2Inp;
+  }
   try {
-    await Users.update(
-      {
-        userInfo: {
-          fullName,
-          birthDate,
-          gender,
-          question1,
-          question2,
-          question3,
-          question4,
-          question5,
-          question6,
-          question7,
-          question8,
-          question9,
-          question10,
-          question11,
-          question12,
-        },
-      },
-      { where: { id } },
-    );
+    await Users.update({ userInfo }, { where: { id } });
     res.sendStatus(200);
   } catch (error) {
     console.log(error);

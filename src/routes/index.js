@@ -5,6 +5,7 @@ const Registration = require('../views/Registration');
 
 indexRouter.get('/', async (req, res) => {
   if (!req.session.user) return res.redirect('/users/login');
+  return res.redirect('/users/profile');
   res.render(Layout, null);
 });
 
@@ -26,17 +27,6 @@ indexRouter.get('/doc/login', (req, res) => {
 indexRouter.get('/doc/reg', (req, res) => {
   if (req.session.user) return res.redirect('/');
   res.render(Registration, { title: 'Регистрация', doc: true });
-});
-
-indexRouter.get('/users/logout', (req, res) => {
-  req.session.destroy((e) => {
-    if (e) {
-      console.log(e);
-      return;
-    }
-    res.clearCookie('ECook');
-    res.redirect('/');
-  });
 });
 
 module.exports = indexRouter;

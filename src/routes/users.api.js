@@ -4,7 +4,6 @@ const { Doctors, Users, Attacks } = require('../../db/models');
 const isAuth = require('../middleware/isAuth');
 
 usersApi.post('/info', async (req, res) => {
-  console.log(req.body);
   const {
     userID, age, gender, addQ1, addQ2,
     addQ3, addQ4, addQ5, addQ6, addQ7, addQ8, addQ9, addQ10, addQ11, addQ12,
@@ -33,9 +32,11 @@ usersApi.post('/info', async (req, res) => {
     userInfo.addQ2 = answer;
   }
   try {
-    await Users.update({ userInfo }, { where: { id: userID } });
-    // req.session.user.form = 'true';
-    res.redirect(`/users/profile/${userID}`);
+    await Users.update({ form: 'true', userInfo }, { where: { id: userID } });
+    req.session.user.form = 'true';
+    const data = (await Attacks.findAll({ where: { user_id: req.session.user.id }, order: [['createdAt', 'DESC']] }))
+      .map((el) => el.get({ plain: true }));
+    res.render(Profile, { id: req.session.user.id, data });
   } catch (error) {
     res.send(error);
   }
