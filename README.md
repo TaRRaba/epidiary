@@ -65,7 +65,7 @@
 ![alt text](readme-assets/10.png)
 **Рисунок 4.1. Эпидневник**
 
-*На верху вы сможете посмотреть своего лечашего врача, а также выбрать другого*
+*Наверху вы сможете посмотреть своего врача, а также выбрать другого*
 
 ![alt text](readme-assets/11.png)
 **Рисунок 5. Выбор врача**
@@ -109,7 +109,7 @@
 ![alt text](readme-assets/21.png)
 **Рисунок 10.1. Информация о приступе**
 
-*В личном кабинете врача врача, можно изменить свои данные*
+*В личном кабинете врача, можно изменить свои данные*
 
 ![alt text](readme-assets/22.png)
 **Рисунок 11. Личный кабинет врача**
@@ -156,4 +156,8 @@ npm start
 
 ### Powered by:
 
-#### [TaRRaba](https://github.com/TaRRaba), [NPetrovna](https://github.com/NPetrovna), [Aleksshipkov](https://github.com/Aleksshipkov), [RustPo](https://github.com/RustPo)
+#### 
+- [TaRRaba](https://github.com/TaRRaba)
+- [NPetrovna](https://github.com/NPetrovna)
+- [Aleksshipkov](https://github.com/Aleksshipkov)
+- [RustPo](https://github.com/RustPo)
