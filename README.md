@@ -85,7 +85,7 @@
     - (example.com)/doc/login - вход
     - (example.com)/doc/reg - регистрация
 
-![alt text](readme-assets/1.png)
+![alt text](readme-assets/15.png)
 **Рисунок 7. Авторизация врача**
 
 *В эпидневнике врача можно узнать всю информацию о его пациентах*
