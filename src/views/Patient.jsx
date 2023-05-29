@@ -6,7 +6,7 @@ module.exports = function Patiecient({ user, dataUser, dataAttack }) {
     <Layout user={user}>
       <script defer src="/js/patientBtn.js" />
 
-      <div className="flex justify-around">
+      <div className="flex mt-5 justify-around">
         <h1>
           Пациент №
           {dataUser.id}
@@ -33,7 +33,7 @@ module.exports = function Patiecient({ user, dataUser, dataAttack }) {
               </div>
             </div>
 
-            <button id="buttonDopInfo" className="changeButton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            <button id="buttonDopInfo" className="changeButton bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
               Посмотреть все
             </button>
 

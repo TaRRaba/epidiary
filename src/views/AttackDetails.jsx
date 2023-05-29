@@ -4,7 +4,7 @@ const Layout = require('./Layout');
 module.exports = function AttackDetails({ data, user }) {
   return (
     <Layout user={user}>
-      <section className="flex w-3/5 mt-10 p-4 mx-auto border md:gap-x-4 justify-center bg-white md:items-center border-gray-700 rounded-2xl">
+      <section className="flex w-3/5 mt-10 p-4 mx-auto shadow-xl border md:gap-x-4 justify-center bg-white md:items-center border-gray-700 rounded-2xl">
         <div id={data.id} className="attackID flex justify-center">
           <div className="attackInfoDiv">
             <div>
@@ -726,13 +726,13 @@ module.exports = function AttackDetails({ data, user }) {
 
               {user?.type === 'user' ? (
                 <div className="flex my-5 mx-5">
-                  <button id="editInfo" type="button" className="visibility: visible ml-2 flex cursor-pointer text-blue-600 hover:bg-blue-600 items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-[#4520aa] hover:text-white">Внести изменения</button>
-                  <button id="saveInfo" type="button" className="visibility: hidden ml-2 flex cursor-pointer text-green-600 hover:bg-green-600 items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-[#4520aa] hover:text-white">Сохранить изменения</button>
+                  <button id="editInfo" type="button" className="visibility: visible ml-2 flex cursor-pointer text-blue-600 hover:bg-blue-700 items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-[#4520aa] hover:text-white">Внести изменения</button>
+                  <button id="saveInfo" type="button" className="visibility: hidden ml-2 flex cursor-pointer text-blue-600 hover:bg-blue-700 items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-[#4520aa] hover:text-white">Сохранить изменения</button>
                   <button id="back" type="button" className="ml-2 flex cursor-pointer text-blue-600 hover:bg-blue-600 items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-[#4520aa] hover:text-white">Назад</button>
                 </div>
               ) : (
                 <div>
-                  <a href={`/patientDetails/${data.user_id}`} type="button" className="ml-2 flex w-20 cursor-pointer text-blue-600 hover:bg-blue-600 items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-[#4520aa] hover:text-white">Назад</a>
+                  <a href={`/patientDetails/${data.user_id}`} type="button" className="ml-2 flex w-20 cursor-pointer text-blue-600 hover:bg-blue-700 items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-[#4520aa] hover:text-white">Назад</a>
                 </div>
               )}
             </div>

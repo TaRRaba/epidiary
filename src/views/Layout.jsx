@@ -4,7 +4,7 @@ module.exports = function Layout({
   user, userDoc, Docs, children,
 }) {
   return (
-    <html className="h-full bg-gray-200" lang="en">
+    <html className="bg-gray-200" lang="en">
       <head>
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -14,7 +14,7 @@ module.exports = function Layout({
         <title>Эпидневник</title>
       </head>
 
-      <body className="h-full bg-gray-200">
+      <body className="bg-gray-200">
         <nav>
           <div className="bg-white">
             <div className="border py-3 px-6">
@@ -36,8 +36,8 @@ module.exports = function Layout({
                             <option>{el.fullName}</option>
                           ))}
                         </select>
-                        <button id="changeDoc" type="button" className="visibility: visible text-sm cursor-pointer rounded-lg bg-teal-500 px-4 py-1.5 text-white hover:bg-teal-600">Изменить</button>
-                        <button id="saveDoc" type="button" className="visibility: hidden text-sm cursor-pointer rounded-lg bg-green-700 px-4 py-1.5 text-white hover:bg-green-800">Сохранить</button>
+                        <button id="changeDoc" type="button" className="visibility: visible text-sm cursor-pointer rounded-lg bg-teal-600 px-4 py-1.5 text-white hover:bg-teal-500">Изменить</button>
+                        <button id="saveDoc" type="button" className="visibility: hidden text-sm cursor-pointer rounded-lg bg-green-800 px-4 py-1.5 text-white hover:bg-green-700">Сохранить</button>
                       </div>
                     ) : (null)}
                     <div className="ml-2 flex">
@@ -62,6 +62,7 @@ module.exports = function Layout({
         </nav>
         {children}
       </body>
+      <div className="mt-36" />
     </html>
   );
 };

@@ -148,7 +148,7 @@ module.exports = function Profile({
           ) : (
             <>
               <div className="flex justify-center mt-10">
-                <a href="/attack/" className="flex justify-center w-50 cursor-pointer rounded-md py-2 px-4 text-gray-100 text-lg font-medium bg-blue-700 hover:bg-blue-500">Добавить приступ</a>
+                <a href="/attack/" className="flex justify-center w-50 cursor-pointer rounded-md py-2 px-4 text-gray-100 text-lg font-medium bg-blue-700 hover:bg-blue-600">Добавить приступ</a>
               </div>
               <div className="flex justify-center">
                 <div className="attContainer flex grid grid-cols-3 p-8">
@@ -169,7 +169,7 @@ module.exports = function Profile({
                           </ul>
                           <div className="flex justify-center gap-4">
                             <a href={`/users/attacks/${id}`} className="text-sm justify-center cursor-pointer rounded-lg bg-gray-500 px-4 py-1.5 text-white hover:bg-gray-600">Подробнее</a>
-                            <div id={id} className="attDelBtn text-sm justify-center cursor-pointer rounded-lg bg-red-600 px-4 py-1.5 text-white hover:bg-red-500">Удалить</div>
+                            <div id={id} className="attDelBtn text-sm justify-center cursor-pointer rounded-lg bg-red-700 px-4 py-1.5 text-white hover:bg-red-600">Удалить</div>
                           </div>
                         </div>
                       </div>

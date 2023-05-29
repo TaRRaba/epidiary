@@ -4,7 +4,7 @@ const Layout = require('./Layout');
 module.exports = function AddAttack({ user }) {
   return (
     <Layout user={user}>
-      <section className="flex w-3/5 mt-10 p-4 mx-auto border md:gap-x-4 justify-center bg-white md:items-center border-gray-700 rounded-2xl">
+      <section className="flex w-3/5 mt-10 p-4 mx-auto shadow-xl border md:gap-x-4 justify-center bg-white md:items-center border-gray-700 rounded-2xl">
         <div className="flex justify-center">
           <div name="attackForm" className="attackForm bg-white">
             <div>
@@ -30,7 +30,7 @@ module.exports = function AddAttack({ user }) {
             </div>
 
             <div className="infoDivButton visibility: visible">
-              <button data-info="info" type="button" className="ml-2 flex cursor-pointer text-blue-600 hover:bg-blue-600 items-center gap-x-1 rounded-md border py-2 px-4 hover:text-white">
+              <button data-info="info" type="button" className="ml-2 flex cursor-pointer text-blue-600 hover:bg-blue-700 items-center gap-x-1 rounded-md border py-2 px-4 hover:text-white">
                 Добавить больше информации
                 {' '}
                 <br />
@@ -39,7 +39,7 @@ module.exports = function AddAttack({ user }) {
               </button>
             </div>
             <div className="hideDivButton visibility: hidden">
-              <button data-hide="hide" type="button" className="ml-2 flex cursor-pointer text-blue-600 hover:bg-blue-600 items-center gap-x-1 rounded-md border py-2 px-4 hover:text-white">
+              <button data-hide="hide" type="button" className="ml-2 flex cursor-pointer text-blue-600 hover:bg-blue-700 items-center gap-x-1 rounded-md border py-2 px-4 hover:text-white">
                 Убрать дополнительную информацию
               </button>
             </div>
@@ -646,8 +646,8 @@ module.exports = function AddAttack({ user }) {
             </div>
 
             <div className="flex my-3">
-              <button data-save="save" type="button" className="ml-2 flex cursor-pointer text-blue-600 hover:bg-blue-600 items-center gap-x-1 rounded-md border py-2 px-4 hover:text-white">Сохранить</button>
-              <button data-cancel="cancel" type="button" className="ml-2 flex cursor-pointer text-blue-600 hover:bg-blue-600 items-center gap-x-1 rounded-md border py-2 px-4 hover:text-white">Отменить</button>
+              <button data-save="save" type="button" className="ml-2 flex cursor-pointer text-blue-600 hover:bg-blue-700 items-center gap-x-1 rounded-md border py-2 px-4 hover:text-white">Сохранить</button>
+              <button data-cancel="cancel" type="button" className="ml-2 flex cursor-pointer text-blue-600 hover:bg-blue-700 items-center gap-x-1 rounded-md border py-2 px-4 hover:text-white">Отменить</button>
             </div>
 
           </div>

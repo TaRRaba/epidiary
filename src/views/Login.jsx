@@ -4,7 +4,7 @@ const Layout = require('./Layout');
 module.exports = function Login({ title, doc }) {
   return (
     <Layout title={title}>
-      <div className="logForm w-96 p-4 mt-10 mx-auto border bg-white md:items-center border-gray-700 rounded-2xl">
+      <div className="logForm w-96 p-4 mt-10 mx-auto shadow-xl border bg-white md:items-center border-gray-700 rounded-2xl">
 
         {
             doc
@@ -62,9 +62,9 @@ module.exports = function Login({ title, doc }) {
             <button
               type="submit"
               className="
-              flex w-full justify-center rounded-md bg-blue-600
+              flex w-full justify-center rounded-md bg-blue-700
               px-3 py-1.5 text-sm font-semibold leading-6 text-white
-              shadow-sm hover:bg-blue-500 focus-visible:outline
+              shadow-sm hover:bg-blue-600 focus-visible:outline
               focus-visible:outline-2 focus-visible:outline-offset-2
               focus-visible:outline-indigo-600"
             >
@@ -78,9 +78,9 @@ module.exports = function Login({ title, doc }) {
                 {
                     doc
                       ? (
-                        <a href="/doc/reg" className="font-semibold leading-6 text-blue-600 hover:text-blue-500">сюда</a>
+                        <a href="/doc/reg" className="font-semibold leading-6 text-blue-700 hover:text-blue-600">сюда</a>
                       ) : (
-                        <a href="/users/reg" className="font-semibold leading-6 text-blue-600 hover:text-blue-500">сюда</a>
+                        <a href="/users/reg" className="font-semibold leading-6 text-blue-700 hover:text-blue-600">сюда</a>
                       )
                 }
               </h2>
