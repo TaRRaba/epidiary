@@ -6,7 +6,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
     <Layout user={user}>
       <script defer src="/js/change.js" />
 
-      <div className="flex justify-around">
+      <div className="flex mt-8 justify-around">
         <h1>Ваши данные</h1>
       </div>
       <section className="flex w-3/5 mt-10 p-4 mx-auto shadow-xl border md:gap-x-4 justify-center bg-white md:items-center border-gray-700 rounded-2xl">
@@ -41,7 +41,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     В каком возрасте возник первый эпилептический приступ?
                     {' '}
-                    {dataUser.userInfo.addQ1}
+                    <b>{dataUser.userInfo.addQ1}</b>
                   </h5>
                 </div>
               ) : (
@@ -49,7 +49,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     В каком возрасте возник первый эпилептический приступ?
                     {' '}
-                    Не указано
+                    <b>Не указано</b>
                   </h5>
                 </div>
               )}
@@ -59,7 +59,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     Устанавливался ли вам диагноз Эпилепсия ?
                     {' '}
-                    {dataUser.userInfo.addQ2}
+                    <b>{dataUser.userInfo.addQ2}</b>
                   </h5>
                 </div>
               ) : (
@@ -67,7 +67,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     Устанавливался ли вам диагноз Эпилепсия ?
                     {' '}
-                    Не указано
+                    <b>Не указано</b>
                   </h5>
                 </div>
               )}
@@ -78,7 +78,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     У кого-либо из Ваших родственников возникали эпилептические приступы ?
                     {' '}
-                    {dataUser.userInfo.addQ3}
+                    <b>{dataUser.userInfo.addQ3}</b>
                   </h5>
                 </div>
               ) : (
@@ -86,7 +86,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     У кого-либо из Ваших родственников возникали эпилептические приступы ?
                     {' '}
-                    Не указано
+                    <b>Не указано</b>
                   </h5>
                 </div>
               )}
@@ -97,7 +97,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     Отмечали ли осложнения при Вашем вынашевании/родах?
                     {' '}
-                    {dataUser.userInfo.addQ4}
+                    <b>{dataUser.userInfo.addQ4}</b>
                   </h5>
                 </div>
               ) : (
@@ -105,7 +105,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     Отмечали ли осложнения при Вашем вынашевании/родах?
                     {' '}
-                    Не указано
+                    <b>Не указано</b>
                   </h5>
                 </div>
               )}
@@ -116,7 +116,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     Отмечались ли задержки психомоторного развития в раннем детском периоде?
                     {' '}
-                    {dataUser.userInfo.addQ5}
+                    <b>{dataUser.userInfo.addQ5}</b>
                   </h5>
                 </div>
               ) : (
@@ -124,7 +124,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     Отмечались ли задержки психомоторного развития в раннем детском периоде?
                     {' '}
-                    Не указано
+                    <b>Не указано</b>
                   </h5>
                 </div>
               )}
@@ -135,7 +135,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     Испытывали ли Вы судороги мышц на высокую температуру в детском возрасте?
                     {' '}
-                    {dataUser.userInfo.addQ6}
+                    <b>{dataUser.userInfo.addQ6}</b>
                   </h5>
                 </div>
               ) : (
@@ -143,7 +143,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     Испытывали ли Вы судороги мышц на высокую температуру в детском возрасте?
                     {' '}
-                    Не указано
+                    <b>Не указано</b>
                   </h5>
                 </div>
               )}
@@ -154,7 +154,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     Есть ли иные неврологические заболевания?
                     {' '}
-                    {dataUser.userInfo.addQ7}
+                    <b>{dataUser.userInfo.addQ7}</b>
                   </h5>
                 </div>
               ) : (
@@ -162,7 +162,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     Есть ли иные неврологические заболевания?
                     {' '}
-                    Не указано
+                    <b>Не указано</b>
                   </h5>
                 </div>
               )}
@@ -173,7 +173,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     Проходили ли Вы хирургическое лечение от эпилепсии?
                     {' '}
-                    {dataUser.userInfo.addQ8}
+                    <b>{dataUser.userInfo.addQ8}</b>
                   </h5>
                 </div>
               ) : (
@@ -181,7 +181,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     Проходили ли Вы хирургическое лечение от эпилепсии?
                     {' '}
-                    Не указано
+                    <b>Не указано</b>
                   </h5>
                 </div>
               )}
@@ -196,7 +196,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     Отмечаете ли Вы такие симптомы как снижение концентрации внимания или ухудшение памяти?
                     {' '}
-                    {dataUser.userInfo.addQ9}
+                    <b>{dataUser.userInfo.addQ9}</b>
                   </h5>
                 </div>
               ) : (
@@ -204,7 +204,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     Отмечаете ли Вы такие симптомы как снижение концентрации внимания или ухудшение памяти?
                     {' '}
-                    Не указано
+                    <b>Не указано</b>
                   </h5>
                 </div>
               )}
@@ -215,7 +215,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     Испытывали ли Вы сложности общении или социокультурном взаимодействии из-за установленного диагноза Эпилепсия?
                     {' '}
-                    {dataUser.userInfo.addQ10}
+                    <b>{dataUser.userInfo.addQ10}</b>
                   </h5>
                 </div>
               ) : (
@@ -223,7 +223,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     Испытывали ли Вы сложности общении или социокультурном взаимодействии из-за установленного диагноза Эпилепсия?
                     {' '}
-                    Не указано
+                    <b>Не указано</b>
                   </h5>
                 </div>
               )}
@@ -234,7 +234,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     Справляетесь ли Вы с эмоциональными и психологическими аспектами своего заболевания?
                     {' '}
-                    {dataUser.userInfo.addQ11}
+                    <b>{dataUser.userInfo.addQ11}</b>
                   </h5>
                 </div>
               ) : (
@@ -242,7 +242,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     Справляетесь ли Вы с эмоциональными и психологическими аспектами своего заболевания?
                     {' '}
-                    Не указано
+                    <b>Не указано</b>
                   </h5>
                 </div>
               )}
@@ -253,7 +253,7 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     Пользуетесь ли Вы транспортным средством в качестве водителя?
                     {' '}
-                    {dataUser.userInfo.addQ12}
+                    <b>{dataUser.userInfo.addQ12}</b>
                   </h5>
                 </div>
               ) : (
@@ -261,13 +261,13 @@ module.exports = function ProfileInfo({ user, dataUser }) {
                   <h5>
                     Пользуетесь ли Вы транспортным средством в качестве водителя?
                     {' '}
-                    Не указано
+                    <b>Не указано</b>
                   </h5>
                 </div>
               )}
 
             <div className="mt-4">
-              <button id="changeButtonId" className="changeButton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              <button id="changeButtonId" className="changeButton bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Внести изменения
               </button>
 
